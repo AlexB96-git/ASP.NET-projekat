@@ -9,6 +9,7 @@ namespace Domain
     public class Role : Entity
     { 
         public string Name { get; set; }
+        public int UserId { get; set; }
         virtual public ICollection<User> Users { get; set; } = new List<User>();
         virtual public ICollection<RoleUseCase> UseCases { get; set; } = new List<RoleUseCase>();
     }

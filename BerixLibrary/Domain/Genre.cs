@@ -9,6 +9,6 @@ namespace Domain
     public class Genre : Entity
     { 
         public string Name { get; set; }
-        virtual public BookGenre Books { get; set; }
+        virtual public ICollection<BookGenre> Books { get; set; } = new List<BookGenre>();
     }
 }
