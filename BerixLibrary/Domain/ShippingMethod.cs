@@ -10,6 +10,6 @@ namespace Domain
     { 
         public string Name { get; set; }
         public decimal Cost { get; set; }
-        virtual public ICollection<Order> Orders { get; set; } = new List<Order>();
+        virtual public ICollection<Order>? Orders { get; set; } = new List<Order>();
     }
 }

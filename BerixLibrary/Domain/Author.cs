@@ -11,6 +11,6 @@ namespace Domain
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
-        virtual public ICollection<BookAuthor> Books { get; set; } = new List<BookAuthor>();
+        virtual public ICollection<BookAuthor>? Books { get; set; } = new List<BookAuthor>();
     }
 }

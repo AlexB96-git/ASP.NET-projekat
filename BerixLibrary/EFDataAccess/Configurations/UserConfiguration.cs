@@ -17,6 +17,7 @@ namespace EFDataAccess.Configurations
             builder.Property(x => x.LastName).IsRequired().HasMaxLength(50);
             builder.Property(x => x.Email).IsRequired().HasMaxLength(50);
             builder.Property(x => x.Address).IsRequired().HasMaxLength(50);
+            builder.Property(x => x.Password).IsRequired().HasMaxLength(1000);
 
             builder.HasIndex(x => x.Address);
             builder.HasIndex(x => x.Email).IsUnique();

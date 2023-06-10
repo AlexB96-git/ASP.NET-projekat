@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application
 {
-    internal interface IUseCaseLogger
+    public interface IUseCaseLogger
     {
     }
 }

@@ -1,7 +1,6 @@
 ﻿using Application;
 using Domain;
 using EFDataAccess;
-using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

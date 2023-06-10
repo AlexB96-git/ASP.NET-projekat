@@ -13,8 +13,9 @@ namespace Domain
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
-        virtual public ICollection<Log> Logs { get; set; } = new List<Log>();
-        virtual public ICollection<Order> Orders { get; set; } = new List<Order>();
+        public string Password { get; set; }
+        virtual public ICollection<Log>? Logs { get; set; } = new List<Log>();
+        virtual public ICollection<Order>? Orders { get; set; } = new List<Order>();
         virtual public Role Role { get; set; }
     }
 }
