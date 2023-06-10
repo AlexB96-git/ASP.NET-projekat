@@ -1,8 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "OdId3LlLSH1p6QCqQrlMChJLCEXN3kTjHjm8IqwRdvRdoQSXm89FQD7GLfgBIW0K9s2wScLsXjq659QFg+YGuQ==",
+  "dgSpecHash": "xefNGjQP8s9/21Xmh+EaWWBFUN1a9UaaStNRlmRoDfHIdQJHMbx/ZkUFk1IapW6gxIpnJp3SJCW8Y0CFtkcdGQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\aleks_eg16h3h\\Desktop\\ASP\\Berix-Knjizara, ASP .NET\\ASP.NET-projekat\\BerixLibrary\\Implementation\\Implementation.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\aleks_eg16h3h\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\aleks_eg16h3h\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
+    "C:\\Users\\aleks_eg16h3h\\.nuget\\packages\\fluentvalidation\\11.5.2\\fluentvalidation.11.5.2.nupkg.sha512",
+    "C:\\Users\\aleks_eg16h3h\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\aleks_eg16h3h\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\aleks_eg16h3h\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\aleks_eg16h3h\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\aleks_eg16h3h\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\aleks_eg16h3h\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
