@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class OrderInvoice
-    {
-        public int Id { get; set; }
+    public class OrderInvoice : Entity
+    { 
         public decimal Price { get; set; }
         virtual public Book Book { get; set; }
         virtual public Order Order { get; set; }

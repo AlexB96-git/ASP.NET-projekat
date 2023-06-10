@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Role
-    {
-        public int Id { get; set; }
+    public class Role : Entity
+    { 
         public string Name { get; set; }
         virtual public ICollection<User> Users { get; set; } = new List<User>();
-        virtual public ICollection<RoleUseCase> RoleUseCases { get; set; } = new List<RoleUseCase>();
+        virtual public ICollection<RoleUseCase> UseCases { get; set; } = new List<RoleUseCase>();
     }
 }

@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Genre
-    {
-        public int Id { get; set; }
+    public class Genre : Entity
+    { 
         public string Name { get; set; }
-        virtual public BookGenre BookGenre { get; set; }
+        virtual public BookGenre Books { get; set; }
     }
 }
