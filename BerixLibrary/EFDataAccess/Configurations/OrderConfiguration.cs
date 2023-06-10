@@ -13,7 +13,7 @@ namespace EFDataAccess.Configurations
     {
         public void Configure(EntityTypeBuilder<Order> builder)
         {
-            builder.Property(x => x.UserId)
+            builder.Property(x => x.CustomerId)
                .IsRequired();
             builder.Property(x => x.ShippingMethodId)
                 .IsRequired();
