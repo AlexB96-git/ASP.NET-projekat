@@ -40,6 +40,10 @@ namespace EFDataAccess.Configurations
                 .WithOne(x => x.Book)
                 .HasForeignKey(x => x.BookId)
                 .OnDelete(DeleteBehavior.Restrict);
+            builder.HasMany(x => x.Prices)
+                .WithOne(x => x.Book)
+                .HasForeignKey(x => x.BookId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

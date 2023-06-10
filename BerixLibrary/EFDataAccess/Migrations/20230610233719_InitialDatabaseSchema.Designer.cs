@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFDataAccess.Migrations
 {
     [DbContext(typeof(DBKnjizaraContext))]
-    [Migration("20230610160244_PatchUserTable")]
-    partial class PatchUserTable
+    [Migration("20230610233719_InitialDatabaseSchema")]
+    partial class InitialDatabaseSchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -147,6 +147,44 @@ namespace EFDataAccess.Migrations
                     b.HasIndex("GenreId");
 
                     b.ToTable("BookGenres");
+                });
+
+            modelBuilder.Entity("Domain.BookPrice", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("Price");
+
+                    b.ToTable("BookPrices");
                 });
 
             modelBuilder.Entity("Domain.Genre", b =>
@@ -534,6 +572,17 @@ namespace EFDataAccess.Migrations
                     b.Navigation("Genre");
                 });
 
+            modelBuilder.Entity("Domain.BookPrice", b =>
+                {
+                    b.HasOne("Domain.Book", "Book")
+                        .WithMany("Prices")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+                });
+
             modelBuilder.Entity("Domain.Log", b =>
                 {
                     b.HasOne("Domain.User", "Actor")
@@ -633,6 +682,8 @@ namespace EFDataAccess.Migrations
                     b.Navigation("Genres");
 
                     b.Navigation("OrderInvoices");
+
+                    b.Navigation("Prices");
                 });
 
             modelBuilder.Entity("Domain.Genre", b =>

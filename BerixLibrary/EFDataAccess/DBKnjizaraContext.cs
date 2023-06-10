@@ -28,6 +28,7 @@ namespace EFDataAccess
             modelBuilder.Entity<Role>().HasQueryFilter(e => !e.IsDeleted);
             modelBuilder.Entity<ShippingMethod>().HasQueryFilter(e => !e.IsDeleted);
             modelBuilder.Entity<UseCase>().HasQueryFilter(e => !e.IsDeleted);
+            modelBuilder.Entity<BookPrice>().HasQueryFilter(e => !e.IsDeleted);
         }
 
         public override int SaveChanges()
@@ -67,5 +68,6 @@ namespace EFDataAccess
         public DbSet<ShippingMethod> ShippingMethods { get; set; }
         public DbSet<UseCase> UseCases { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<BookPrice> BookPrices { get; set; }
     }
 }

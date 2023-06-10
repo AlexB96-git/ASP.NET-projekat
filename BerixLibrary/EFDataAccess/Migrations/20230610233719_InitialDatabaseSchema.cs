@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EFDataAccess.Migrations
 {
-    public partial class CreateDatabaseInitial : Migration
+    public partial class InitialDatabaseSchema : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -75,7 +75,6 @@ namespace EFDataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -149,6 +148,31 @@ namespace EFDataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "BookPrices",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BookId = table.Column<int>(type: "int", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BookPrices", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_BookPrices_Books_BookId",
+                        column: x => x.BookId,
+                        principalTable: "Books",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "BookGenres",
                 columns: table => new
                 {
@@ -183,6 +207,7 @@ namespace EFDataAccess.Migrations
                     LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Address = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -340,6 +365,16 @@ namespace EFDataAccess.Migrations
                 column: "GenreId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_BookPrices_BookId",
+                table: "BookPrices",
+                column: "BookId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BookPrices_Price",
+                table: "BookPrices",
+                column: "Price");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Books_Language",
                 table: "Books",
                 column: "Language");
@@ -435,6 +470,9 @@ namespace EFDataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "BookGenres");
+
+            migrationBuilder.DropTable(
+                name: "BookPrices");
 
             migrationBuilder.DropTable(
                 name: "Logs");
