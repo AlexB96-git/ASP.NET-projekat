@@ -7,7 +7,7 @@ Progress:
 2. EfDataAccess: 100% - feedback
 3. Application: 100% - feedback
 4. Implementation: 66% - ongoing
-5. Api: 0% - ToStart
+5. Api: 5% - ongoing
 
 Table Of Contents:
 1. Baza Podataka
