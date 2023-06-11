@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Genres
 {
-    public interface IEditUseCaseCommand: ICommand<GenreDTO>
+    public interface IEditGenreCommand: ICommand<GenreDTO>
     {
     }
 }

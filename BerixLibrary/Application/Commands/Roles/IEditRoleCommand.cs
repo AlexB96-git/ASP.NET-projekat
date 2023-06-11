@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Roles
 {
-    public interface IEditShippingMethodCommand: ICommand<RoleDTO>
+    public interface IEditRoleCommand: ICommand<RoleDTO>
     {
     }
 }

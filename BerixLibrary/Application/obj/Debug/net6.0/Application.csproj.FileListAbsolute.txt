@@ -13,3 +13,5 @@ C:\Users\aleks_eg16h3h\Desktop\ASP\Berix-Knjizara, ASP .NET\ASP.NET-projekat\Ber
 C:\Users\aleks_eg16h3h\Desktop\ASP\Berix-Knjizara, ASP .NET\ASP.NET-projekat\BerixLibrary\Application\obj\Debug\net6.0\refint\Application.dll
 C:\Users\aleks_eg16h3h\Desktop\ASP\Berix-Knjizara, ASP .NET\ASP.NET-projekat\BerixLibrary\Application\obj\Debug\net6.0\Application.pdb
 C:\Users\aleks_eg16h3h\Desktop\ASP\Berix-Knjizara, ASP .NET\ASP.NET-projekat\BerixLibrary\Application\obj\Debug\net6.0\ref\Application.dll
+C:\Users\aleks_eg16h3h\Desktop\ASP\Berix-Knjizara, ASP .NET\ASP.NET-projekat\BerixLibrary\Application\bin\Debug\net6.0\EFDataAccess.dll
+C:\Users\aleks_eg16h3h\Desktop\ASP\Berix-Knjizara, ASP .NET\ASP.NET-projekat\BerixLibrary\Application\bin\Debug\net6.0\EFDataAccess.pdb

@@ -17,7 +17,7 @@ namespace EFDataAccess.Configurations
                 .IsRequired()
                 .HasMaxLength(50);
 
-            builder.HasIndex(x => x.Name);
+            builder.HasIndex(x => x.Name).IsUnique();
 
             builder.HasMany(x => x.Books)
                 .WithOne(x=>x.Genre)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.UseCases
 {
-    public interface IDeleteUserCommand: ICommand<int>
+    public interface IDeleteUseCaseCommand: ICommand<int>
     {
     }
 }

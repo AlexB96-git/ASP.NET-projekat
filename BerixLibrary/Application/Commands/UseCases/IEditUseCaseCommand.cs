@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.UseCases
 {
-    public interface IEditUserCommand: ICommand<UseCaseDTO>
+    public interface IEditUseCaseCommand: ICommand<UseCaseDTO>
     {
     }
 }

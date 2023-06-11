@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Authors
 {
-    public interface IEditBookCommand: ICommand<AuthorDTO>
+    public interface IEditAuthorCommand: ICommand<AuthorDTO>
     {
     }
 }

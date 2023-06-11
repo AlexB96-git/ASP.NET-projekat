@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Books
 {
-    public interface IDeleteRoleCommand: ICommand<int>
+    public interface IDeleteBookCommand: ICommand<int>
     {
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Roles
 {
-    public interface IDeleteShippingMethodCommand: ICommand<int>
+    public interface IDeleteRoleCommand: ICommand<int>
     {
     }
 }

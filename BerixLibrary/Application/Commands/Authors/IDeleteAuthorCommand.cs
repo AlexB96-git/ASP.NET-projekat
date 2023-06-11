@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Authors
 {
-    public interface IDeleteBookCommand: ICommand<int>
+    public interface IDeleteAuthorCommand: ICommand<int>
     {
     }
 }

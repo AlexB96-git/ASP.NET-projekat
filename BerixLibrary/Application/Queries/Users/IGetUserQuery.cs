@@ -1,13 +1,13 @@
-﻿using Application.DTOs.UseCases;
+﻿using Application.DTOs.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Queries.UseCases
+namespace Application.Queries.Users
 {
-    public interface IGetUserQuery : IQuery<int, UseCaseDTO>
+    public interface IGetUserQuery : IQuery<int, UserDTO>
     {
     }
 }

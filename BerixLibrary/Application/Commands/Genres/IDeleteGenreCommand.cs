@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Genres
 {
-    public interface IDeleteUseCaseCommand: ICommand<int>
+    public interface IDeleteGenreCommand: ICommand<int>
     {
     }
 }

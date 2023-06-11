@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Books
 {
-    public interface IAddRoleCommand: ICommand<BookDTO>
+    public interface IAddBookCommand: ICommand<BookDTO>
     {
     }
 }

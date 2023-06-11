@@ -30,6 +30,9 @@
             "projectReferences": {
               "C:\\Users\\aleks_eg16h3h\\Desktop\\ASP\\Berix-Knjizara, ASP .NET\\ASP.NET-projekat\\BerixLibrary\\Domain\\Domain.csproj": {
                 "projectPath": "C:\\Users\\aleks_eg16h3h\\Desktop\\ASP\\Berix-Knjizara, ASP .NET\\ASP.NET-projekat\\BerixLibrary\\Domain\\Domain.csproj"
+              },
+              "C:\\Users\\aleks_eg16h3h\\Desktop\\ASP\\Berix-Knjizara, ASP .NET\\ASP.NET-projekat\\BerixLibrary\\EFDataAccess\\EFDataAccess.csproj": {
+                "projectPath": "C:\\Users\\aleks_eg16h3h\\Desktop\\ASP\\Berix-Knjizara, ASP .NET\\ASP.NET-projekat\\BerixLibrary\\EFDataAccess\\EFDataAccess.csproj"
               }
             }
           }

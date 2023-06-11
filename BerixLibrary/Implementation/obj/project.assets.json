@@ -798,6 +798,7 @@
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "Domain": "1.0.0",
+          "EFDataAccess": "1.0.0",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
