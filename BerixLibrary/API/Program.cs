@@ -18,6 +18,8 @@ using System.Text;
 using Api.Core;
 using EFDataAccess;
 using Implementation.Validators;
+using Application.Commands.UseCases;
+using Implementation.Commands.UseCases;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -66,42 +68,47 @@ builder.Services.AddTransient<DBKnjizaraContext>();
 //builder.Services.AddAutoMapper(typeof(EfCreateAuthor).Assembly);
 //builder.Services.AddAutoMapper(typeof(EfCreateGenre).Assembly);
 //builder.Services.AddAutoMapper(typeof(EfCreateUser).Assembly);
+builder.Services.AddAutoMapper(typeof(EfCreateUseCase).Assembly);
 
-#region Authors
-builder.Services.AddTransient<IAddAuthorCommand, EfCreateAuthor>();
-builder.Services.AddTransient<IDeleteAuthorCommand, EfDeleteAuthor>();
-builder.Services.AddTransient<IEditAuthorCommand, EfUpdateAuthor>();
+#region UseCase
+builder.Services.AddTransient<IAddUseCaseCommand, EfCreateUseCase>();
 #endregion
 
-#region Genres
-builder.Services.AddTransient<IDeleteGenreCommand, EfDeleteGenre>();
-builder.Services.AddTransient<IAddGenreCommand, EfCreateGenre>();
-builder.Services.AddTransient<IEditGenreCommand, EfUpdateGenre>();
-#endregion
+//#region Authors
+//builder.Services.AddTransient<IAddAuthorCommand, EfCreateAuthor>();
+//builder.Services.AddTransient<IDeleteAuthorCommand, EfDeleteAuthor>();
+//builder.Services.AddTransient<IEditAuthorCommand, EfUpdateAuthor>();
+//#endregion
 
-#region Books
-builder.Services.AddTransient<IAddBookCommand, EfCreateBook>();
-builder.Services.AddTransient<IDeleteBookCommand, EfDeleteBook>();
-builder.Services.AddTransient<IEditBookCommand, EfUpdateBook>();
-#endregion
+//#region Genres
+//builder.Services.AddTransient<IDeleteGenreCommand, EfDeleteGenre>();
+//builder.Services.AddTransient<IAddGenreCommand, EfCreateGenre>();
+//builder.Services.AddTransient<IEditGenreCommand, EfUpdateGenre>();
+//#endregion
 
-#region Users
-builder.Services.AddTransient<IAddUserCommand, EfCreateUser>();
-builder.Services.AddTransient<IDeleteUserCommand, EfDeleteUser>();
-builder.Services.AddTransient<IEditUserCommand, EfUpdateUser>();
-#endregion
+//#region Books
+//builder.Services.AddTransient<IAddBookCommand, EfCreateBook>();
+//builder.Services.AddTransient<IDeleteBookCommand, EfDeleteBook>();
+//builder.Services.AddTransient<IEditBookCommand, EfUpdateBook>();
+//#endregion
 
-#region Validators
-builder.Services.AddTransient<BookDTOValidator>();
-builder.Services.AddTransient<AuthorDTOValidator>();
-builder.Services.AddTransient<GenreDTOValidator>();
-builder.Services.AddTransient<UserDTOValidator>();
-builder.Services.AddTransient<LogDTOValidator>();
-builder.Services.AddTransient<RoleDTOValidator>();
-builder.Services.AddTransient<ShippingMethodDTOValidator>();
+//#region Users
+//builder.Services.AddTransient<IAddUserCommand, EfCreateUser>();
+//builder.Services.AddTransient<IDeleteUserCommand, EfDeleteUser>();
+//builder.Services.AddTransient<IEditUserCommand, EfUpdateUser>();
+//#endregion
+
+//#region Validators
+//builder.Services.AddTransient<BookDTOValidator>();
+//builder.Services.AddTransient<AuthorDTOValidator>();
+//builder.Services.AddTransient<GenreDTOValidator>();
+//builder.Services.AddTransient<UserDTOValidator>();
+//builder.Services.AddTransient<LogDTOValidator>();
+//builder.Services.AddTransient<RoleDTOValidator>();
+//builder.Services.AddTransient<ShippingMethodDTOValidator>();
 builder.Services.AddTransient<UseCaseDTOValidator>();
-builder.Services.AddTransient<OrderDTOValidator>();
-#endregion
+//builder.Services.AddTransient<OrderDTOValidator>();
+//#endregion
 
 
 builder.Services.AddAuthentication(options =>
