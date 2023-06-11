@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Queries.ShippingMethods
 {
-    public interface IGetUseCasesQuery : IQuery<string, IEnumerable<ShippingMethodDTO>>
+    public interface IGetShippingMethodsQuery : IQuery<string, IEnumerable<ShippingMethodDTO>>
     {
     }
 }
