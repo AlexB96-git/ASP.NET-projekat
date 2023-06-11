@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Logs
 {
-    public interface IEditOrderCommand: ICommand<LogDTO>
+    public interface IEditLogCommand: ICommand<LogDTO>
     {
     }
 }

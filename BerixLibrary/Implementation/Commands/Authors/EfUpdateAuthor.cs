@@ -39,6 +39,10 @@ namespace Implementation.Commands.Authors
                 throw new EntityNotFoundException(Id, typeof(Author));
             }
 
+            /*
+        virtual public ICollection<BookAuthor>? Books { get; set; } = new List<BookAuthor>();
+             */
+
             _validator.ValidateAndThrow(request);
 
             author.FirstName = request.FirstName;

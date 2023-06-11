@@ -41,6 +41,11 @@ namespace Implementation.Commands.UseCases
                 throw new EntityNotFoundException(Id, typeof(UseCase));
             }
 
+            /*
+        virtual public ICollection<RoleUseCase>? Roles { get; set; } = new List<RoleUseCase>();
+        virtual public ICollection<Log>? Logs { get; set; } = new List<Log>();
+             */
+
             _validator.ValidateAndThrow(request);
 
             useCase.Name = request.Name;

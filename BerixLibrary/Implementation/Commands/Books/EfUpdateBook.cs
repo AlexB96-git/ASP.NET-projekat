@@ -20,9 +20,9 @@ namespace Implementation.Commands.Books
         private readonly DBKnjizaraContext _dbContext;
         private readonly BookDTOValidator _validator;
 
-        public int Id => throw new NotImplementedException();
+        public int Id => 18;
 
-        public string Name => throw new NotImplementedException();
+        public string Name => "Update Book";
 
         public EfUpdateBook(IMapper mapper, DBKnjizaraContext dbContext, BookDTOValidator validator)
         {
@@ -40,16 +40,20 @@ namespace Implementation.Commands.Books
                 throw new EntityNotFoundException(Id, typeof(Book));
             }
 
+            /*
+        virtual public ICollection<OrderInvoice>? OrderInvoices { get; set; } = new List<OrderInvoice>();
+        virtual public ICollection<BookPrice> Prices { get; set; } = new List<BookPrice>();
+             */
+
             _validator.ValidateAndThrow(request);
 
-            var bookToBeUpdated = _mapper.Map<Book>(request);
 
-            book.ReleaseDate = bookToBeUpdated.ReleaseDate;
-            book.Genres = bookToBeUpdated.Genres;
-            book.Authors = bookToBeUpdated.Authors;
-            book.Title = bookToBeUpdated.Title;
-            book.Description = bookToBeUpdated.Description;
-            book.Language = bookToBeUpdated.Language;
+            book.ReleaseDate = request.ReleaseDate;
+            book.Genres = _mapper.Map<ICollection<BookGenre>>(request.Genres);
+            book.Authors = _mapper.Map<ICollection<BookAuthor>>(request.Authors);
+            book.Title = request.Title;
+            book.Description = request.Description;
+            book.Language = request.Language;
 
             _dbContext.SaveChanges();
         }

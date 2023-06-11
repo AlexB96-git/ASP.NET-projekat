@@ -39,6 +39,11 @@ namespace Implementation.Commands.Roles
                 throw new EntityNotFoundException(Id, typeof(ShippingMethod));
             }
 
+            /*
+        virtual public ICollection<User>? Users { get; set; } = new List<User>();
+        virtual public ICollection<RoleUseCase>? UseCases { get; set; } = new List<RoleUseCase>();
+             */
+
             _validator.ValidateAndThrow(request);
 
             role.Name = request.Name;

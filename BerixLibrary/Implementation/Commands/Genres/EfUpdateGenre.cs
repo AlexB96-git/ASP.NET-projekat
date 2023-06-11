@@ -40,6 +40,10 @@ namespace Implementation.Commands.Genres
                 throw new EntityNotFoundException(Id, typeof(Genre));
             }
 
+            /*
+        virtual public ICollection<BookGenre>? Books { get; set; } = new List<BookGenre>();
+             */
+
             _validator.ValidateAndThrow(request);
 
             genre.Name = request.Name;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Orders
 {
-    public interface IDeleteRoleCommand: ICommand<int>
+    public interface IDeleteOrderCommand: ICommand<int>
     {
     }
 }

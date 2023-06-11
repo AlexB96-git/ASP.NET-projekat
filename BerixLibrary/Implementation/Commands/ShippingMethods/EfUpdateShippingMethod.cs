@@ -39,6 +39,10 @@ namespace Implementation.Commands.ShippingMethods
                 throw new EntityNotFoundException(Id, typeof(ShippingMethod));
             }
 
+            /*
+                virtual public ICollection<Order>? Orders { get; set; } = new List<Order>();
+             */
+
             _validator.ValidateAndThrow(request);
 
             shippingMethod.Name = request.Name;
