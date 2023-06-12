@@ -19,7 +19,7 @@ Table Of Contents:
 
 Uputstvo za pregledaca: </br>
 1. Nakon povezivanja na bazu podataka pomocu odgovarajuceg konekcionog stringa i migriranja šeme, Pokrenuti aplikaciju i pozvati InitialiseDatabase api, metod post. Ovo ce postaviti pocetno stanje aplikacije, i vise nece biti potrebe pozivati ovaj metod osim u slucaju promene baze podataka.
-2. Login se obavlja tako sto se pozove Token kontroler i prosledi se objekat sa kredencijalima: {email: [email], password: [password]}. Zatim se taj token iskopira i nalepi se u Authorization formi u swaggeru. Voditi racuna da je forma unosa u tekstualno polje: "Bearer [token]". Detaljan flow koraka se nalazi na slici ispod. Kredencijali: </br></br>Obican user: user@user.com, user123. </br>Admin: admin@admin.com, admin123</br></br>
+2. Login se obavlja tako sto se pozove Token kontroler i prosledi se objekat sa kredencijalima: {email: [email], password: [password]}. Zatim se taj token iskopira i nalepi se u Authorization formi u swaggeru. Voditi racuna da je forma unosa u tekstualno polje: "Bearer [token]". Detaljan flow koraka se nalazi na slici ispod. Kredencijali: </br></br>Obican user: user@user.com, user123 - za sada nijedna privilegija </br>Admin: admin@admin.com, admin123 - sve privilegije</br></br>
 ![image](https://github.com/AlexB96-git/ASP.NET-projekat/assets/112824193/b1ea152e-4ced-4947-aff0-86846bd5ab34)</br></br>
 3. Uskoro ce bitia omogucena i registracija, u toku dana. Trenutno sam na poslu. 
 
