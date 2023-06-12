@@ -19,7 +19,7 @@ Table Of Contents:
 
 Uputstvo za pregledaca: </br>
 1. Nakon povezivanja na bazu podataka pomocu odgovarajuceg konekcionog stringa i migriranja šeme, Pokrenuti aplikaciju i pozvati InitialiseDatabase api, metod post. Ovo ce postaviti pocetno stanje aplikacije, i vise nece biti potrebe pozivati ovaj metod osim u slucaju promene baze podataka.
-2. Uskoro ce biti omoguceni login i registracija, u toku dana. Trenutno sam na poslu.
+2. Uskoro ce biti omoguceni login i registracija, u toku dana. Trenutno sam na poslu. Obican user: user@user.com, user123. Admin: admin@admin.com, admin123
 
 Content:
 1. Baza Podataka:</br>
