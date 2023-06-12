@@ -3,6 +3,7 @@ using Implementation.Password;
 using EFDataAccess;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using Application;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -208,6 +209,7 @@ namespace API.Controllers
 
             var roleUseCases = new List<RoleUseCase>();
 
+            //dodavanje svih prava adminu
             foreach(var useCase in useCases)
             {
                 roleUseCases.Add(
@@ -218,6 +220,15 @@ namespace API.Controllers
                     }
                 );
             }
+
+            //dodavanje nekih prava obicnom korisniku, za pocetak nista
+            //roleUseCases.Add(
+            //        new RoleUseCase
+            //        {
+            //            UseCase = UseCase.ElementAt,
+            //            Role = roles.First()
+            //        }
+            //    );
 
             _dbContext.ShippingMethods.AddRange(shippingMethods);
             _dbContext.UseCases.AddRange(useCases);
