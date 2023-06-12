@@ -21,6 +21,8 @@ using Implementation.Validators;
 using Application.Commands.UseCases;
 using Implementation.Commands.UseCases;
 using Microsoft.OpenApi.Models;
+using Application.Queries.UseCases;
+using Implementation.Queries.UseCases;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -100,6 +102,10 @@ builder.Services.AddAutoMapper(typeof(EfCreateUseCase).Assembly);
 
 #region UseCase
 builder.Services.AddTransient<IAddUseCaseCommand, EfCreateUseCase>();
+builder.Services.AddTransient<IEditUseCaseCommand, EfUpdateUseCase>();
+builder.Services.AddTransient<IDeleteUseCaseCommand, EfDeleteUseCase>();
+builder.Services.AddTransient<IGetUseCaseQuery, EfGetUseCase>();
+builder.Services.AddTransient<IGetUseCasesQuery, EfGetUseCases>();
 #endregion
 
 //#region Authors

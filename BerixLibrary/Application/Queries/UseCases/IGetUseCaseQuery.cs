@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Queries.UseCases
 {
-    public interface IGetUseCaseQuery : IQuery<string, UseCaseDTO>
+    public interface IGetUseCaseQuery : IQuery<int, UseCaseDTO>
     {
     }
 }

@@ -59,12 +59,15 @@ namespace API.Controllers
                 new UseCase { Name = "Create Order" },
                 new UseCase { Name = "Delete Order" },
                 new UseCase { Name = "Update Order" },
+                new UseCase { Name = "Get UseCases" },
+                new UseCase { Name = "Get UseCase" },
             };
 
             var roles = new List<Role>
             {
                 new Role { Name = "admin"},
                 new Role { Name = "user"},
+                new Role { Name = "unauthenticated"},
             };
 
             var authors = new List<Author>
@@ -198,11 +201,21 @@ namespace API.Controllers
 
                 new User
                 {
-                    Role = roles.First(),
+                    Role = roles.ElementAt(1),
                     FirstName = "User",
                     LastName = "User",
                     Email = "user@user.com",
                     Address = "Beograd 11000 Bulevar Kralja Aleksandra 189",
+                    Password = PasswordHandler.ecrypt("user123")
+                }, 
+
+                new User
+                {
+                    Role = roles.ElementAt(2),
+                    FirstName = "Unauthorized",
+                    LastName = "User",
+                    Email = "unknown",
+                    Address = "unknown",
                     Password = PasswordHandler.ecrypt("user123")
                 }, 
             };

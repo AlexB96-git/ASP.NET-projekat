@@ -26,7 +26,10 @@ namespace Application
             //Console.WriteLine($"{DateTime.Now}: {actor.Identity} is trying to execute {command.Name} using data: " +
             //    $"{JsonConvert.SerializeObject(request)}");
 
-            logger.Log(command, actor, request);
+            if (actor.Id != 3)
+            {
+                logger.Log(command, actor, request);
+            }
 
             if (!actor.AllowedUseCases.Contains(command.Id))
             {
@@ -40,7 +43,8 @@ namespace Application
             (IQuery<TSearch, TResult> query,
             TSearch search)
         {
-            logger.Log(query, actor, search);
+            
+                logger.Log(query, actor, search);
             //Console.WriteLine($"{DateTime.Now}: {actor.Identity} is trying to execute {query.Name} and get this data: { JsonConvert.SerializeObject(search)} ");
 
             //potrebno promeniti uslov mozda
