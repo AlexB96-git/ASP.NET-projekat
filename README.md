@@ -17,6 +17,7 @@ Table Of Contents:
 5. Implementation
 6. Api
 7. Behind The Scenes
+8. References
 
 Uputstvo za pregledaca: </br>
 1. Nakon povezivanja na bazu podataka (BerixKnjizara) pomocu odgovarajuceg konekcionog stringa i migriranja šeme, Pokrenuti aplikaciju i pozvati InitialiseDatabase api, metod post. Ovo ce postaviti pocetno stanje aplikacije, odnosno baze podataka, i vise nece biti potrebe pozivati ovaj metod osim u slucaju promene baze podataka. Ovaj poziv se ne autentifikuje.
@@ -67,5 +68,6 @@ Ovo je uradjeno da bi se iole umanjio broj entiteta u projektu, a da se i dalje 
 ![IMG_20230612_204939](https://github.com/AlexB96-git/ASP.NET-projekat/assets/112824193/b0390af9-f4ef-4470-a1eb-47754e58932c)</br></br>
 7.5. Finish is so close</br>
 ![IMG_20230612_205005](https://github.com/AlexB96-git/ASP.NET-projekat/assets/112824193/c4d56a79-2383-4fba-95a4-f2a16fc6b83a)</br></br>
-
+8. References
+8.1. Kod sa vezbi iz ASP-a iz prethodnih godina.
 
