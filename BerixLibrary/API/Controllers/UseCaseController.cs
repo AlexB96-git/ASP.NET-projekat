@@ -38,7 +38,8 @@ namespace API.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] UseCaseDTO useCase, [FromServices] IAddUseCaseCommand command)
         {
-            Console.WriteLine("Stigao");
+            Console.WriteLine(actor.Id);
+            Console.WriteLine(actor.Identity);
             //executor.ExecuteCommand(command, useCase);
             return StatusCode(StatusCodes.Status201Created);
         }

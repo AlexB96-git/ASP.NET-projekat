@@ -1,4 +1,5 @@
 ﻿using Application.DTOs;
+using Domain;
 using EFDataAccess;
 using Implementation.Password;
 using Microsoft.EntityFrameworkCore;
@@ -29,7 +30,7 @@ namespace Api.Core
                 return null;
             }
 
-            var userUseCases = _dbContext.Roles.Where(r => user.RoleId == r.Id).FirstOrDefault().UseCases;
+            var userUseCases = _dbContext.Roles.Where(r => user.RoleId == r.Id).Select(x => x.UseCases).FirstOrDefault().ToList();
 
             if (!PasswordHandler.compareHasedPasswords(loginParams.Password, user.Password))
             {
