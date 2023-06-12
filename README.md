@@ -17,6 +17,9 @@ Table Of Contents:
 5. Implementation
 6. Api
 
+Uputstvo za pregledaca: 
+  Nakon povezivanja na bazu podataka pomocu odgovarajuceg konekcionog stringa i migriranja šeme, Pokrenuti aplikaciju i pozvati InitialiseDatabase api, metod post. Ovo ce postaviti pocetno stanje aplikacije, i vise nece biti potrebe pozivati ovaj metod osim u slucaju promene baze podataka.
+
 Content:
 1. Baza Podataka:</br>
 1.1. Baza Podataka je redukovana u smislu tabela koje bi sve mogla da ima (na primer odvojena tabela za jezike ciji bi odnos sa knjigom bio vise prema vise).</br>
