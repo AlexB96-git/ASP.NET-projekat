@@ -13,8 +13,8 @@ namespace Domain
         public string Language { get; set; }
         public DateTime ReleaseDate { get; set; }
         virtual public ICollection<OrderInvoice>? OrderInvoices { get; set; } = new List<OrderInvoice>();
-        virtual public ICollection<BookAuthor> Authors { get; set; } = new List<BookAuthor>();
-        virtual public ICollection<BookPrice> Prices { get; set; } = new List<BookPrice>();
-        virtual public ICollection<BookGenre> Genres { get; set; } = new List<BookGenre>();
+        virtual public ICollection<BookAuthor>? Authors { get; set; } = new List<BookAuthor>();
+        virtual public ICollection<BookPrice>? Prices { get; set; } = new List<BookPrice>();
+        virtual public ICollection<BookGenre>? Genres { get; set; } = new List<BookGenre>();
     }
 }

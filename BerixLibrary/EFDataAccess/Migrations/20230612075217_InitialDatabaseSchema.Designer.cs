@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFDataAccess.Migrations
 {
     [DbContext(typeof(DBKnjizaraContext))]
-    [Migration("20230611111249_MinorPatch")]
-    partial class MinorPatch
+    [Migration("20230612075217_InitialDatabaseSchema")]
+    partial class InitialDatabaseSchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

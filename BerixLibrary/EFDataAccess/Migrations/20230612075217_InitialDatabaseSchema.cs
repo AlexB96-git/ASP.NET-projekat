@@ -387,7 +387,8 @@ namespace EFDataAccess.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Genres_Name",
                 table: "Genres",
-                column: "Name");
+                column: "Name",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Logs_ActorId",
