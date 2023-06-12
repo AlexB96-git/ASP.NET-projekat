@@ -17,6 +17,8 @@ Table Of Contents:
 5. Implementation
 6. Api
 7. Behind The Scenes
+8. References![IMG_20230612_020608](https://github.com/AlexB96-git/ASP.NET-projekat/assets/112824193/a028f62f-666c-4ed7-bfd2-01eeabb39ad8)
+
 
 Uputstvo za pregledaca: </br>
 1. Nakon povezivanja na bazu podataka (BerixKnjizara) pomocu odgovarajuceg konekcionog stringa i migriranja šeme, Pokrenuti aplikaciju i pozvati InitialiseDatabase api, metod post. Ovo ce postaviti pocetno stanje aplikacije, odnosno baze podataka, i vise nece biti potrebe pozivati ovaj metod osim u slucaju promene baze podataka. Ovaj poziv se ne autentifikuje.
@@ -29,7 +31,7 @@ Uputstvo za pregledaca: </br>
 4.3. post ce ubacivati novi element bez pratecih kolekcija gde god je to moguce za entitete,</br>
 4.5. put ce editovati po minimalnim poljima, nece se raditi edit kolekcija referišućih tabela jer bi to bilo previse pisanja u json-u.</br>
 4.6. delete ce raditi kao sto je i namenjeno.</br>
-5. Trenutno je odradjen samo 1/9 entiteta, sa sve validacijama i proveravma i 5 endpoint-eva. Sutra cu odraditi jos Entiteta.
+5. Trenutno je odradjen samo 1/9 entiteta, sa sve validacijama i proveravma i 5 endpoint-eva. Sutra 13/6/2023 cu odraditi jos Entiteta.
 
 Content:
 1. Baza Podataka:</br>
@@ -54,8 +56,13 @@ Ovo je uradjeno da bi se iole umanjio broj entiteta u projektu, a da se i dalje 
 5.2. Struktura Implementation-a:</br></br>
 ![image](https://github.com/AlexB96-git/ASP.NET-projekat/assets/112824193/8b73a6b8-6bc2-460d-a998-f7a26e6316e2)
 6. Api:</br>
-6.1. Api obezbedjuje komunikaciju i manipulaciju sa svim prethodnim slojevima.
-6.2. Struuktura Api-ja ce biti kasnije postavljena.
-7. Behind The Scenes:
+6.1. Api obezbedjuje komunikaciju i manipulaciju sa svim prethodnim slojevima.</br>
+6.2. Struuktura Api-ja ce biti kasnije postavljena.</br></br>
+7. Behind The Scenes:</br></br>
+![IMG_20230612_020608](https://github.com/AlexB96-git/ASP.NET-projekat/assets/112824193/38c99344-84f3-4f9b-9504-c4b9ba9a4cf5)
+![IMG_20230612_205005](https://github.com/AlexB96-git/ASP.NET-projekat/assets/112824193/c4d56a79-2383-4fba-95a4-f2a16fc6b83a)
+![IMG_20230612_204956](https://github.com/AlexB96-git/ASP.NET-projekat/assets/112824193/f6727ccf-bd2f-462d-b9a2-43377e28a891)
+![IMG_20230612_204939](https://github.com/AlexB96-git/ASP.NET-projekat/assets/112824193/b0390af9-f4ef-4470-a1eb-47754e58932c)
+![IMG_20230612_204948](https://github.com/AlexB96-git/ASP.NET-projekat/assets/112824193/191a045c-9745-4e7d-b4ca-192c760f5024)
 
 
