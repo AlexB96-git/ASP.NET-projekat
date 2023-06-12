@@ -25,7 +25,7 @@ Uputstvo za pregledaca: </br>
 
 Content:
 1. Baza Podataka:</br>
-1.1. Baza Podataka je redukovana u smislu tabela koje bi sve mogla da ima (na primer odvojena tabela za jezike ciji bi odnos sa knjigom bio vise prema vise).</br>
+1.1. Baza Podataka je redukovana u smislu tabela koje bi sve mogla da ima (na primer odvojena tabela za jezike ciji bi odnos sa knjigom bio vise prema vise). Takodje zbog jednostavnosti: umesto uvodjenja vezivne tabele izmedju korisnika i uloga sto bi omogucilo da jedan korisnik ima istovremeno vise uloga, samim tim i privilegija, jedan korisnik moze imati samo jednu ulogu.</br>
 Ovo je uradjeno da bi se iole umanjio broj entiteta u projektu, a da se i dalje prikazu sve funkcionalnosti.</br>
 1.2. Izgled baze u MSSMS nakon sto se napravi preko migracija.</br></br>
 ![image](https://github.com/AlexB96-git/ASP.NET-projekat/assets/112824193/4db951ab-f3c4-4368-bd00-da76a2b9d303)
