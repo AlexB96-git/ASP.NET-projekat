@@ -1,5 +1,5 @@
 # ASP.NET-projekat
-Projekat ce biti odradjen preko vikenda.
+Projekat je u izradi. Ispod se vodi evidencija onoga sto je trenutno uradjeno.
 Podaci unutar bilo kog projekta, dakle metode, interfejsi i ostalo su podlozni promenama u zavisnosti od potreba visih slojeva i uocavanja gresaka.
 Tema projekta je knjizara, u kojoj se moze obavljati kupovina knjiga.</br></br>
 Progress:
@@ -7,7 +7,7 @@ Progress:
 2. EfDataAccess: 100% - feedback
 3. Application: 100% - feedback
 4. Implementation: 68% - ongoing
-5. Api: 12% - ongoing - operable
+5. Api: 20% - ongoing - operable
 
 Table Of Contents:
 1. Baza Podataka
@@ -17,8 +17,9 @@ Table Of Contents:
 5. Implementation
 6. Api
 
-Uputstvo za pregledaca: 
-  Nakon povezivanja na bazu podataka pomocu odgovarajuceg konekcionog stringa i migriranja šeme, Pokrenuti aplikaciju i pozvati InitialiseDatabase api, metod post. Ovo ce postaviti pocetno stanje aplikacije, i vise nece biti potrebe pozivati ovaj metod osim u slucaju promene baze podataka.
+Uputstvo za pregledaca: </br>
+1. Nakon povezivanja na bazu podataka pomocu odgovarajuceg konekcionog stringa i migriranja šeme, Pokrenuti aplikaciju i pozvati InitialiseDatabase api, metod post. Ovo ce postaviti pocetno stanje aplikacije, i vise nece biti potrebe pozivati ovaj metod osim u slucaju promene baze podataka.
+2. Uskoro ce biti omoguceni login i registracija
 
 Content:
 1. Baza Podataka:</br>
