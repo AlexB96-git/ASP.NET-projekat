@@ -12,8 +12,8 @@ Progress:
 1. Domain: 100% - Done
 2. EfDataAccess: 100% - Done
 3. Application: 100% - Done
-4. Implementation: 85% - ongoing
-5. Api: 65% - ongoing - operable
+4. Implementation: 87% - ongoing
+5. Api: 70% - ongoing - operable
 
 <hr></hr>
 
@@ -40,7 +40,7 @@ Uputstvo za pregledaca: </br>
 4.3. post ce ubacivati novi element bez pratecih kolekcija gde god je to moguce za entitete,</br>
 4.5. put ce editovati po minimalnim poljima, nece se raditi edit kolekcija referišućih tabela jer bi to bilo previse pisanja u json-u.</br>
 4.6. delete ce raditi kao sto je i namenjeno.</br>
-5. Trenutno je odradjeno 3/9 entiteta, sa sve validacijama i proverama i 5 endpoint-eva. Danas 13/6/2023 cu odraditi jos Entiteta, sve komande su napravljene samo su kontroleri ostali.
+5. Trenutno je odradjeno 4/9 entiteta, sa sve validacijama i proverama i 5 endpoint-eva. Danas 13/6/2023 cu odraditi jos Entiteta, sve komande su napravljene samo su kontroleri ostali.
 
 <hr></hr>
 
