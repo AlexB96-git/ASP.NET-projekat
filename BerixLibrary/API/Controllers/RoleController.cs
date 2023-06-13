@@ -23,7 +23,7 @@ namespace API.Controllers
 
         // GET: api/<RoleController>
         [HttpGet]
-        public IActionResult Get([FromServices] IGetRolesQuery query, [FromQuery] string? searchTerm)
+        public IActionResult Get([FromServices] IGetRolesQuery query, [FromQuery] string searchTerm)
         {
             return Ok(_executor.ExecuteQuery(query, searchTerm));
         }

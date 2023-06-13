@@ -11,7 +11,7 @@ namespace Implementation.Profiles
 {
     public class RoleProfile:Profile
     {
-        RoleProfile()
+        public RoleProfile()
         {
             CreateMap<Role, RoleDTO>();
             CreateMap<RoleDTO, Role>();
