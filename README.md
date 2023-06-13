@@ -12,8 +12,8 @@ Progress:
 1. Domain: 100% - feedback
 2. EfDataAccess: 100% - feedback
 3. Application: 100% - feedback
-4. Implementation: 80% - ongoing
-5. Api: 45% - ongoing - operable
+4. Implementation: 83% - ongoing
+5. Api: 60% - ongoing - operable
 
 <hr></hr>
 
