@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Implementation.Commands.Roles
 {
-    public class EfCreateRole : IAddRole
+    public class EfCreateRole : IAddRoleCommand
     {
         private readonly IMapper _mapper;
         private readonly DBKnjizaraContext _dbContext;

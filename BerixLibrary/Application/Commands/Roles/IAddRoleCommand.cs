@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Roles
 {
-    public interface IAddRole: ICommand<RoleDTO>
+    public interface IAddRoleCommand: ICommand<RoleDTO>
     {
     }
 }

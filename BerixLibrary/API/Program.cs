@@ -27,6 +27,10 @@ using Implementation.Commands.ShippingMethods;
 using Application.Commands.ShippingMethods;
 using Application.Queries.ShippingMethods;
 using Implementation.Queries.ShippingMethods;
+using Implementation.Commands.Roles;
+using Application.Commands.Roles;
+using Application.Queries.Roles;
+using Implementation.Queries.Roles;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -104,6 +108,7 @@ builder.Services.AddTransient<DBKnjizaraContext>();
 //builder.Services.AddAutoMapper(typeof(EfCreateUser).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateUseCase).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateShippingMethod).Assembly);
+builder.Services.AddAutoMapper(typeof(EfCreateRole).Assembly);
 
 #region UseCase
 builder.Services.AddTransient<IAddUseCaseCommand, EfCreateUseCase>();
@@ -119,6 +124,14 @@ builder.Services.AddTransient<IEditShippingMethodCommand, EfUpdateShippingMethod
 builder.Services.AddTransient<IDeleteShippingMethodCommand, EfDeleteShippingMethod>();
 builder.Services.AddTransient<IGetShippingMethodQuery, EfGetShippingMethod>();
 builder.Services.AddTransient<IGetShippingMethodsQuery, EfGetShippingMethods>();
+#endregion
+
+#region Role
+builder.Services.AddTransient<IAddRoleCommand, EfCreateRole>();
+builder.Services.AddTransient<IEditRoleCommand, EfUpdateRole>();
+builder.Services.AddTransient<IDeleteRoleCommand, EfDeleteRole>();
+builder.Services.AddTransient<IGetRoleQuery, EfGetRole>();
+builder.Services.AddTransient<IGetRolesQuery, EfGetRoles>();
 #endregion
 
 //#region Authors
@@ -151,7 +164,7 @@ builder.Services.AddTransient<IGetShippingMethodsQuery, EfGetShippingMethods>();
 //builder.Services.AddTransient<GenreDTOValidator>();
 //builder.Services.AddTransient<UserDTOValidator>();
 //builder.Services.AddTransient<LogDTOValidator>();
-//builder.Services.AddTransient<RoleDTOValidator>();
+builder.Services.AddTransient<RoleDTOValidator>();
 builder.Services.AddTransient<ShippingMethodDTOValidator>();
 builder.Services.AddTransient<UseCaseDTOValidator>();
 //builder.Services.AddTransient<OrderDTOValidator>();

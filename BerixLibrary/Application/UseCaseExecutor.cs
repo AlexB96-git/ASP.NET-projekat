@@ -47,7 +47,6 @@ namespace Application
                 logger.Log(query, actor, search);
             //Console.WriteLine($"{DateTime.Now}: {actor.Identity} is trying to execute {query.Name} and get this data: { JsonConvert.SerializeObject(search)} ");
 
-            //potrebno promeniti uslov mozda
             if (!actor.AllowedUseCases.Contains(query.Id))
                 throw new UnauthorizedUseCaseException(query, actor);
             return query.Execute(search);
