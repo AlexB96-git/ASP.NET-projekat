@@ -12,8 +12,8 @@ Progress:
 1. Domain: 100% - Done
 2. EfDataAccess: 100% - Done
 3. Application: 100% - Done
-4. Implementation: 92% - ongoing
-5. Api: 78% - ongoing
+4. Implementation: 92% - ongoing (6 queries left)
+5. Api: 78% - ongoing (3 controllers left, 1 controller(Book) -> put/post method not working correctly)
 
 <hr></hr>
 
