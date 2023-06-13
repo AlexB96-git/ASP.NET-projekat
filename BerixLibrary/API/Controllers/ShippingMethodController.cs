@@ -23,7 +23,7 @@ namespace API.Controllers
 
         // GET: api/<ShippingMethodController>
         [HttpGet]
-        public IActionResult Get([FromServices] IGetShippingMethodsQuery query, [FromQuery] string searchTerm)
+        public IActionResult Get([FromServices] IGetShippingMethodsQuery query, [FromQuery] string? searchTerm = null)
         {
             return Ok(_executor.ExecuteQuery(query, searchTerm));
         }

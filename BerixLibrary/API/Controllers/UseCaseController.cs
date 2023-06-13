@@ -23,7 +23,7 @@ namespace API.Controllers
 
         // GET: api/<UseCaseController>
         [HttpGet]
-        public IActionResult Get([FromServices] IGetUseCasesQuery query, [FromQuery] string searchTerm)
+        public IActionResult Get([FromServices] IGetUseCasesQuery query, [FromQuery] string? searchTerm = null)
         {
             return Ok(_executor.ExecuteQuery(query, searchTerm));
         }
