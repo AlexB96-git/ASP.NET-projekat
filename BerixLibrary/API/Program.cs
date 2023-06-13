@@ -33,6 +33,8 @@ using Application.Queries.Roles;
 using Implementation.Queries.Roles;
 using Application.Queries.Genres;
 using Implementation.Queries.Genres;
+using Application.Queries.Authors;
+using Implementation.Queries.Authors;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -105,7 +107,7 @@ builder.Services.AddTransient<DBKnjizaraContext>();
 //ispod je za automapper
 
 //builder.Services.AddAutoMapper(typeof(EfCreateBook).Assembly);
-//builder.Services.AddAutoMapper(typeof(EfCreateAuthor).Assembly);
+builder.Services.AddAutoMapper(typeof(EfCreateAuthor).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateGenre).Assembly);
 //builder.Services.AddAutoMapper(typeof(EfCreateUser).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateUseCase).Assembly);
@@ -136,11 +138,13 @@ builder.Services.AddTransient<IGetRoleQuery, EfGetRole>();
 builder.Services.AddTransient<IGetRolesQuery, EfGetRoles>();
 #endregion
 
-//#region Authors
-//builder.Services.AddTransient<IAddAuthorCommand, EfCreateAuthor>();
-//builder.Services.AddTransient<IDeleteAuthorCommand, EfDeleteAuthor>();
-//builder.Services.AddTransient<IEditAuthorCommand, EfUpdateAuthor>();
-//#endregion
+#region Authors
+builder.Services.AddTransient<IAddAuthorCommand, EfCreateAuthor>();
+builder.Services.AddTransient<IDeleteAuthorCommand, EfDeleteAuthor>();
+builder.Services.AddTransient<IEditAuthorCommand, EfUpdateAuthor>();
+builder.Services.AddTransient<IGetAuthorsQuery, EfGetAuthors>();
+builder.Services.AddTransient<IGetAuthorQuery, EfGetAuthor>();
+#endregion
 
 #region Genres
 builder.Services.AddTransient<IDeleteGenreCommand, EfDeleteGenre>();
@@ -164,7 +168,7 @@ builder.Services.AddTransient<IGetGenreQuery, EfGetGenre>();
 
 //#region Validators
 //builder.Services.AddTransient<BookDTOValidator>();
-//builder.Services.AddTransient<AuthorDTOValidator>();
+builder.Services.AddTransient<AuthorDTOValidator>();
 builder.Services.AddTransient<GenreDTOValidator>();
 //builder.Services.AddTransient<UserDTOValidator>();
 //builder.Services.AddTransient<LogDTOValidator>();

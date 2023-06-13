@@ -1,5 +1,4 @@
 ﻿using Application.DTOs.Genres;
-using Application.DTOs.Roles;
 using Application.Queries.Genres;
 using AutoMapper;
 using EFDataAccess;

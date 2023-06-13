@@ -1,10 +1,7 @@
 ﻿using Application;
 using Application.Commands.Genres;
-using Application.Commands.Roles;
 using Application.DTOs.Genres;
-using Application.DTOs.Roles;
 using Application.Queries.Genres;
-using Application.Queries.Roles;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

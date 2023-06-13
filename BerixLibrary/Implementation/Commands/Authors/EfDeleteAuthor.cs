@@ -23,7 +23,7 @@ namespace Implementation.Commands.Authors
         }
         public void Execute(int id)
         {
-            var author = _dbContext.Roles.Find(id);
+            var author = _dbContext.Authors.Find(id);
             if (author == null)
             {
                 throw new EntityNotFoundException(id, typeof(Author));
