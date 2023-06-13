@@ -5,15 +5,15 @@
 
 <hr></hr>
 
-Projekat je u izradi. Ispod se vodi evidencija onoga sto je trenutno uradjeno.
+Projekat nije u potpunosti kompletiran. Ispod se vodi evidencija onoga sto je trenutno uradjeno.
 Podaci unutar bilo kog projekta, dakle metode, interfejsi i ostalo su podlozni promenama u zavisnosti od potreba visih slojeva i uocavanja gresaka.
 Tema projekta je knjizara, u kojoj se moze obavljati kupovina knjiga. Korpa ne postoji na backendu u vidu tabele i entiteta, vec samo narudzbine. </br></br>
 Progress:
 1. Domain: 100% - Done
 2. EfDataAccess: 100% - Done
 3. Application: 100% - Done
-4. Implementation: 90% - ongoing
-5. Api: 75% - ongoing - operable
+4. Implementation: 92% - ongoing
+5. Api: 78% - ongoing - operable
 
 <hr></hr>
 
@@ -25,7 +25,7 @@ Table Of Contents:
 5. Implementation
 6. Api
 7. Behind The Scenes
-8. References
+8. References : Kodovi sa vezbi i snimci vezbi
 
 <hr></hr>
 
@@ -34,7 +34,8 @@ Uputstvo za pregledaca: </br>
 2. Login se obavlja tako sto se pozove Token kontroler i prosledi se objekat sa kredencijalima: {email: [email], password: [password]}. Zatim se taj token iskopira i nalepi se u Authorization formi u swaggeru. Voditi racuna da je forma unosa u tekstualno polje: "Bearer [token]". Detaljan flow koraka se nalazi na slici ispod. Kredencijali: </br></br>Obican user: user@user.com, user123 - za sada nijedna privilegija </br>Admin: admin@admin.com, admin123 - sve privilegije</br></br>
 ![image](https://github.com/AlexB96-git/ASP.NET-projekat/assets/112824193/b1ea152e-4ced-4947-aff0-86846bd5ab34)</br></br>
 3. Registracija ce se vrsiti tako sto ce se neautentifikovanom korisniku dodati privilegija da moze da doda user-a. -- not implemented, next to be implemented</br>
-4. Trenutno je odradjeno 5/9 entiteta, sa sve validacijama i proverama i 5 endpoint-eva. Danas 13/6/2023 cu odraditi jos Entiteta, sve komande su napravljene samo su kontroleri ostali.
+4. Trenutno je odradjeno 6/9 entiteta, sa sve validacijama i proverama i 5 endpoint-eva. Danas 13/6/2023 cu odraditi jos Entiteta, sve komande su napravljene samo su kontroleri ostali.
+5. Ono sto je ostalo neimplementirano za sada: </br>Entitet Book (put i post), </br>Entitet User (fale kontroler i queriji za get), </br>Entitet Log (isto fale kontroler i queriji za get), </br>Entitet Order (isto fale kontroler i queriji za get).
 
 <hr></hr>
 
