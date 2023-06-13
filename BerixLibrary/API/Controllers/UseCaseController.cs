@@ -12,33 +12,34 @@ namespace API.Controllers
     [ApiController]
     public class UseCaseController : ControllerBase
     {
-        private readonly UseCaseExecutor executor;
-        private readonly IApplicationActor actor;
+        private readonly UseCaseExecutor _executor;
+        private readonly IApplicationActor _actor;
 
         public UseCaseController(UseCaseExecutor executor, IApplicationActor actor)
         {
-            this.executor = executor;
-            this.actor = actor;
+            _executor = executor;
+            _actor = actor;
         }
+
         // GET: api/<UseCaseController>
         [HttpGet]
-        public IActionResult Get([FromQuery] string searchTerm, [FromServices] IGetUseCasesQuery query)
+        public IActionResult Get([FromServices] IGetUseCasesQuery query, [FromQuery] string? searchTerm = null)
         {
-            return Ok(executor.ExecuteQuery(query, searchTerm));
+            return Ok(_executor.ExecuteQuery(query, searchTerm));
         }
 
         // GET api/<UseCaseController>/5
         [HttpGet("{id}")]
         public IActionResult Get(int id, [FromServices] IGetUseCaseQuery query)
         {
-            return Ok(executor.ExecuteQuery(query, id));
+            return Ok(_executor.ExecuteQuery(query, id));
         }
 
         // POST api/<UseCaseController>
         [HttpPost]
         public IActionResult Post([FromBody] UseCaseDTO useCase, [FromServices] IAddUseCaseCommand command)
         {
-            executor.ExecuteCommand(command, useCase);
+            _executor.ExecuteCommand(command, useCase);
             return StatusCode(StatusCodes.Status201Created);
         }
 
@@ -47,7 +48,7 @@ namespace API.Controllers
         public IActionResult Put(int id, [FromBody] UseCaseDTO dto, [FromServices] IEditUseCaseCommand command)
         {
             dto.Id = id;
-            executor.ExecuteCommand(command, dto);
+            _executor.ExecuteCommand(command, dto);
             return StatusCode(StatusCodes.Status204NoContent);
         }
 
@@ -55,7 +56,7 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id, [FromServices] IDeleteUseCaseCommand command)
         {
-            executor.ExecuteCommand(command, id);
+            _executor.ExecuteCommand(command, id);
             return NoContent();
         }
     }

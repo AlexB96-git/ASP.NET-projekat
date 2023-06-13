@@ -23,6 +23,10 @@ using Implementation.Commands.UseCases;
 using Microsoft.OpenApi.Models;
 using Application.Queries.UseCases;
 using Implementation.Queries.UseCases;
+using Implementation.Commands.ShippingMethods;
+using Application.Commands.ShippingMethods;
+using Application.Queries.ShippingMethods;
+using Implementation.Queries.ShippingMethods;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -99,6 +103,7 @@ builder.Services.AddTransient<DBKnjizaraContext>();
 //builder.Services.AddAutoMapper(typeof(EfCreateGenre).Assembly);
 //builder.Services.AddAutoMapper(typeof(EfCreateUser).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateUseCase).Assembly);
+builder.Services.AddAutoMapper(typeof(EfCreateShippingMethod).Assembly);
 
 #region UseCase
 builder.Services.AddTransient<IAddUseCaseCommand, EfCreateUseCase>();
@@ -106,6 +111,14 @@ builder.Services.AddTransient<IEditUseCaseCommand, EfUpdateUseCase>();
 builder.Services.AddTransient<IDeleteUseCaseCommand, EfDeleteUseCase>();
 builder.Services.AddTransient<IGetUseCaseQuery, EfGetUseCase>();
 builder.Services.AddTransient<IGetUseCasesQuery, EfGetUseCases>();
+#endregion
+
+#region ShippingMethod
+builder.Services.AddTransient<IAddShippingMethodCommand, EfCreateShippingMethod>();
+builder.Services.AddTransient<IEditShippingMethodCommand, EfUpdateShippingMethod>();
+builder.Services.AddTransient<IDeleteShippingMethodCommand, EfDeleteShippingMethod>();
+builder.Services.AddTransient<IGetShippingMethodQuery, EfGetShippingMethod>();
+builder.Services.AddTransient<IGetShippingMethodsQuery, EfGetShippingMethods>();
 #endregion
 
 //#region Authors
@@ -139,7 +152,7 @@ builder.Services.AddTransient<IGetUseCasesQuery, EfGetUseCases>();
 //builder.Services.AddTransient<UserDTOValidator>();
 //builder.Services.AddTransient<LogDTOValidator>();
 //builder.Services.AddTransient<RoleDTOValidator>();
-//builder.Services.AddTransient<ShippingMethodDTOValidator>();
+builder.Services.AddTransient<ShippingMethodDTOValidator>();
 builder.Services.AddTransient<UseCaseDTOValidator>();
 //builder.Services.AddTransient<OrderDTOValidator>();
 //#endregion
