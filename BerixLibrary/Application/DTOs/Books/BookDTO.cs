@@ -1,5 +1,7 @@
 ﻿using Application.DTOs.Authors;
 using Application.DTOs.Genres;
+using Application.DTOs.Orders;
+using Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +19,7 @@ namespace Application.DTOs.Books
         public DateTime ReleaseDate { get; set; }
         public ICollection<GenreDTO> Genres { get; set; } = new List<GenreDTO>();
         public ICollection<AuthorDTO> Authors { get; set; } = new List<AuthorDTO>();
+        virtual public ICollection<BookPriceDTO> Prices { get; set; } = new List<BookPriceDTO>();
+        virtual public ICollection<OrderInvoiceDTO>? OrderInvoices { get; set; } = new List<OrderInvoiceDTO>();
     }
 }

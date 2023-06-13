@@ -35,6 +35,8 @@ using Application.Queries.Genres;
 using Implementation.Queries.Genres;
 using Application.Queries.Authors;
 using Implementation.Queries.Authors;
+using Application.Queries.Books;
+using Implementation.Queries.Books;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -106,7 +108,7 @@ builder.Services.AddTransient<DBKnjizaraContext>();
 
 //ispod je za automapper
 
-//builder.Services.AddAutoMapper(typeof(EfCreateBook).Assembly);
+builder.Services.AddAutoMapper(typeof(EfCreateBook).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateAuthor).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateGenre).Assembly);
 //builder.Services.AddAutoMapper(typeof(EfCreateUser).Assembly);
@@ -154,11 +156,13 @@ builder.Services.AddTransient<IGetGenresQuery, EfGetGenres>();
 builder.Services.AddTransient<IGetGenreQuery, EfGetGenre>();
 #endregion
 
-//#region Books
-//builder.Services.AddTransient<IAddBookCommand, EfCreateBook>();
-//builder.Services.AddTransient<IDeleteBookCommand, EfDeleteBook>();
-//builder.Services.AddTransient<IEditBookCommand, EfUpdateBook>();
-//#endregion
+#region Books
+builder.Services.AddTransient<IAddBookCommand, EfCreateBook>();
+builder.Services.AddTransient<IDeleteBookCommand, EfDeleteBook>();
+builder.Services.AddTransient<IEditBookCommand, EfUpdateBook>();
+builder.Services.AddTransient<IGetBookQuery, EfGetBook>();
+builder.Services.AddTransient<IGetBooksQuery, EfGetBooks>();
+#endregion
 
 //#region Users
 //builder.Services.AddTransient<IAddUserCommand, EfCreateUser>();
@@ -167,7 +171,7 @@ builder.Services.AddTransient<IGetGenreQuery, EfGetGenre>();
 //#endregion
 
 //#region Validators
-//builder.Services.AddTransient<BookDTOValidator>();
+builder.Services.AddTransient<BookDTOValidator>();
 builder.Services.AddTransient<AuthorDTOValidator>();
 builder.Services.AddTransient<GenreDTOValidator>();
 //builder.Services.AddTransient<UserDTOValidator>();

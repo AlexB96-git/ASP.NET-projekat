@@ -10,7 +10,7 @@ namespace Domain
     { 
         public int BookId { get; set; }
         public int OrderId { get; set; }
-        public decimal Price { get; set; }
+        public int NumberOfItems { get; set; }
         virtual public Book Book { get; set; }
         virtual public Order Order { get; set; }
     }

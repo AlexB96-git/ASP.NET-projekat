@@ -1,5 +1,7 @@
-﻿using Application.DTOs.ShippingMethods;
+﻿using Application.DTOs.Books;
+using Application.DTOs.ShippingMethods;
 using Application.DTOs.Users;
+using Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +13,10 @@ namespace Application.DTOs.Orders
     public class OrderDTO
     {
         public int Id { get; set; }
-        public UserDTO Customer { get; set; }
-        public ShippingMethodDTO ShippingMethod { get; set; }
-        public ICollection<BookAndPriceDTO> BooksAndPrices { get; set; } = new List<BookAndPriceDTO>();
+        public int CustomerId { get; set; }
+        public int ShippingMethodId { get; set; }
+        virtual public ICollection<OrderInvoiceDTO> OrderInvoices { get; set; } = new List<OrderInvoiceDTO>();
+        virtual public ShippingMethodDTO ShippingMethod { get; set; }
+        virtual public UserDTO Customer { get; set; }
     }
 }

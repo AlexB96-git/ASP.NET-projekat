@@ -38,6 +38,9 @@ namespace Implementation.Validators
             RuleFor(x => x.Genres)
                 .NotEmpty()
                 .WithMessage("Book Authors must not be empty");
+            RuleFor(x => x.Prices)
+                .NotEmpty()
+                .WithMessage("Book Prices must not be empty");
         }
 
         private bool IsDateInFuture(DateTime date)

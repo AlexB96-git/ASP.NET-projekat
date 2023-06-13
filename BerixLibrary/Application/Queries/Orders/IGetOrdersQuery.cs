@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Queries.Orders
 {
-    public interface IGetOrdersQuery : IQuery<OrderSearchDTO, IEnumerable<OrderDTO>>
+    public interface IGetOrdersQuery : IQuery<string, IEnumerable<OrderDTO>>
     {
     }
 }

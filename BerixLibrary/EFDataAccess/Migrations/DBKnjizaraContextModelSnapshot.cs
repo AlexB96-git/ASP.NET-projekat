@@ -328,19 +328,19 @@ namespace EFDataAccess.Migrations
                     b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("OrderId")
+                    b.Property<int>("NumberOfItems")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BookId");
 
-                    b.HasIndex("OrderId");
+                    b.HasIndex("NumberOfItems");
 
-                    b.HasIndex("Price");
+                    b.HasIndex("OrderId");
 
                     b.ToTable("OrderInvoices");
                 });

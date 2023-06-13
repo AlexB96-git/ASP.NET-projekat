@@ -13,10 +13,10 @@ namespace EFDataAccess.Configurations
     {
         public void Configure(EntityTypeBuilder<OrderInvoice> builder)
         {
-            builder.Property(x => x.Price)
+            builder.Property(x => x.NumberOfItems)
                 .IsRequired();
 
-            builder.HasIndex(x => x.Price);
+            builder.HasIndex(x => x.NumberOfItems);
 
             builder.HasOne(x => x.Book);
             builder.HasOne(x => x.Order);

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Implementation.Validators
 {
-    public class OrderDTOValidator: AbstractValidator<OrderDTO>
+    public class OrderDTOValidator : AbstractValidator<OrderDTO>
     {
         public OrderDTOValidator()
         {
