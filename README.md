@@ -1,4 +1,10 @@
 # ASP.NET-projekat
+<blockquote>Aleksa Berisavac 32/18</blockquote>
+
+<blockquote>Akademija tehničko-umetničkih strukovnih studija Beograd odsek visoka škola za informacione i komunikacione tehnologije</blockquote>
+
+<hr></hr>
+
 Projekat je u izradi. Ispod se vodi evidencija onoga sto je trenutno uradjeno.
 Podaci unutar bilo kog projekta, dakle metode, interfejsi i ostalo su podlozni promenama u zavisnosti od potreba visih slojeva i uocavanja gresaka.
 Tema projekta je knjizara, u kojoj se moze obavljati kupovina knjiga.</br></br>
@@ -8,6 +14,8 @@ Progress:
 3. Application: 100% - feedback
 4. Implementation: 80% - ongoing
 5. Api: 45% - ongoing - operable
+
+<hr></hr>
 
 Table Of Contents:
 1. Baza Podataka
@@ -19,18 +27,22 @@ Table Of Contents:
 7. Behind The Scenes
 8. References
 
+<hr></hr>
+
 Uputstvo za pregledaca: </br>
 1. Nakon povezivanja na bazu podataka (BerixKnjizara) pomocu odgovarajuceg konekcionog stringa i migriranja šeme, Pokrenuti aplikaciju i pozvati InitialiseDatabase api, metod post. Ovo ce postaviti pocetno stanje aplikacije, odnosno baze podataka, i vise nece biti potrebe pozivati ovaj metod osim u slucaju promene baze podataka. Ovaj poziv se ne autentifikuje.
 2. Login se obavlja tako sto se pozove Token kontroler i prosledi se objekat sa kredencijalima: {email: [email], password: [password]}. Zatim se taj token iskopira i nalepi se u Authorization formi u swaggeru. Voditi racuna da je forma unosa u tekstualno polje: "Bearer [token]". Detaljan flow koraka se nalazi na slici ispod. Kredencijali: </br></br>Obican user: user@user.com, user123 - za sada nijedna privilegija </br>Admin: admin@admin.com, admin123 - sve privilegije</br></br>
 ![image](https://github.com/AlexB96-git/ASP.NET-projekat/assets/112824193/b1ea152e-4ced-4947-aff0-86846bd5ab34)</br></br>
 3. Registracija ce se vrsiti tako sto ce se neautentifikovanom korisniku dodati privilegija da moze da doda user-a. -- not implemented, next to be implemented</br>
 4. Sto se tice manipulacije entitetima, zbog pojednostavljivanja samog projekta:</br>
-4.1. get ce ujedno dohvatati i pretrazivati entitete,</br>
+4.1. get ce ujedno dohvatati i pretrazivati entitete dok je termin za pretragu opcion,</br>
 4.2. get/{id} ce dohvatati specifican entitet,</br>
 4.3. post ce ubacivati novi element bez pratecih kolekcija gde god je to moguce za entitete,</br>
 4.5. put ce editovati po minimalnim poljima, nece se raditi edit kolekcija referišućih tabela jer bi to bilo previse pisanja u json-u.</br>
 4.6. delete ce raditi kao sto je i namenjeno.</br>
-5. Trenutno je odradjen samo 1/9 entiteta, sa sve validacijama i proveravma i 5 endpoint-eva. Sutra 13/6/2023 cu odraditi jos Entiteta.
+5. Trenutno je odradjeno 2/9 entiteta, sa sve validacijama i proverama i 5 endpoint-eva. Danas 13/6/2023 cu odraditi jos Entiteta, sve komande su napravljene samo su kontroleri ostali.
+
+<hr></hr>
 
 Content:
 1. Baza Podataka:</br>
