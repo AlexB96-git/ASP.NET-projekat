@@ -31,6 +31,8 @@ using Implementation.Commands.Roles;
 using Application.Commands.Roles;
 using Application.Queries.Roles;
 using Implementation.Queries.Roles;
+using Application.Queries.Genres;
+using Implementation.Queries.Genres;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -104,7 +106,7 @@ builder.Services.AddTransient<DBKnjizaraContext>();
 
 //builder.Services.AddAutoMapper(typeof(EfCreateBook).Assembly);
 //builder.Services.AddAutoMapper(typeof(EfCreateAuthor).Assembly);
-//builder.Services.AddAutoMapper(typeof(EfCreateGenre).Assembly);
+builder.Services.AddAutoMapper(typeof(EfCreateGenre).Assembly);
 //builder.Services.AddAutoMapper(typeof(EfCreateUser).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateUseCase).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateShippingMethod).Assembly);
@@ -140,11 +142,13 @@ builder.Services.AddTransient<IGetRolesQuery, EfGetRoles>();
 //builder.Services.AddTransient<IEditAuthorCommand, EfUpdateAuthor>();
 //#endregion
 
-//#region Genres
-//builder.Services.AddTransient<IDeleteGenreCommand, EfDeleteGenre>();
-//builder.Services.AddTransient<IAddGenreCommand, EfCreateGenre>();
-//builder.Services.AddTransient<IEditGenreCommand, EfUpdateGenre>();
-//#endregion
+#region Genres
+builder.Services.AddTransient<IDeleteGenreCommand, EfDeleteGenre>();
+builder.Services.AddTransient<IAddGenreCommand, EfCreateGenre>();
+builder.Services.AddTransient<IEditGenreCommand, EfUpdateGenre>();
+builder.Services.AddTransient<IGetGenresQuery, EfGetGenres>();
+builder.Services.AddTransient<IGetGenreQuery, EfGetGenre>();
+#endregion
 
 //#region Books
 //builder.Services.AddTransient<IAddBookCommand, EfCreateBook>();
@@ -161,7 +165,7 @@ builder.Services.AddTransient<IGetRolesQuery, EfGetRoles>();
 //#region Validators
 //builder.Services.AddTransient<BookDTOValidator>();
 //builder.Services.AddTransient<AuthorDTOValidator>();
-//builder.Services.AddTransient<GenreDTOValidator>();
+builder.Services.AddTransient<GenreDTOValidator>();
 //builder.Services.AddTransient<UserDTOValidator>();
 //builder.Services.AddTransient<LogDTOValidator>();
 builder.Services.AddTransient<RoleDTOValidator>();
