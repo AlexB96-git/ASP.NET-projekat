@@ -31,10 +31,10 @@ Table Of Contents:
 
 Uputstvo za pregledaca: </br>
 1. Nakon povezivanja na bazu podataka (BerixKnjizara) pomocu odgovarajuceg konekcionog stringa i migriranja šeme (Fokusira se na EfDataAccess projekat u nugget konzoli, pozove se update-database), <b>Pokrenuti aplikaciju i pozvati InitialiseDatabase api</b>, metod post. Ovo ce postaviti pocetno stanje aplikacije, odnosno baze podataka, i vise nece biti potrebe pozivati ovaj metod osim u slucaju promene baze podataka. Ovaj poziv se ne autentifikuje.
-2. Login se obavlja tako sto se pozove Token kontroler i prosledi se objekat sa kredencijalima: {email: [email], password: [password]}. Zatim se taj token iskopira i nalepi se u Authorization formi u swaggeru. Voditi racuna da je forma unosa u tekstualno polje: "Bearer [token]". Detaljan flow koraka se nalazi na slici ispod. Kredencijali: </br></br>Obican user: user@user.com, user123 - za sada nijedna privilegija </br>Admin: admin@admin.com, admin123 - sve privilegije</br></br>
+2. Login se obavlja tako sto se pozove Token kontroler i prosledi se objekat sa kredencijalima: {email: [email], password: [password]}. Zatim se taj token iskopira i nalepi se u Authorization formi u swaggeru. Voditi racuna da je forma unosa u tekstualno polje: "Bearer [token]". Detaljan flow koraka se nalazi na slici ispod. Kredencijali: </br></br>Neautorizovan korisnik, </br>Obican user: user@user.com, user123 - za sada nijedna privilegija </br>Admin: admin@admin.com, admin123 - sve privilegije</br></br>
 ![image](https://github.com/AlexB96-git/ASP.NET-projekat/assets/112824193/b1ea152e-4ced-4947-aff0-86846bd5ab34)</br></br>
 3. Registracija ce se vrsiti tako sto ce se neautentifikovanom korisniku dodati privilegija da moze da doda user-a. -- not implemented, next to be implemented</br>
-4. Trenutno je odradjeno 6/9 entiteta, sa sve validacijama i proverama i 5 endpoint-eva. Danas 13/6/2023 cu odraditi jos Entiteta, sve komande su napravljene samo su kontroleri ostali.
+4. Trenutno je odradjeno 6/9 entiteta, sa sve validacijama i proverama i 5 endpoint-eva. Sve komande su napravljene samo su kontroleri ostali, i par querija za get.
 5. Ono sto je ostalo neimplementirano za sada: </br>Entitet Book (put i post), </br>Entitet User (fale kontroler i queriji za get), </br>Entitet Log (isto fale kontroler i queriji za get), </br>Entitet Order (isto fale kontroler i queriji za get).
 
 <hr></hr>
