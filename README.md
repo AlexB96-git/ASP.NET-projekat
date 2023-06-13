@@ -7,7 +7,7 @@
 
 Projekat je u izradi. Ispod se vodi evidencija onoga sto je trenutno uradjeno.
 Podaci unutar bilo kog projekta, dakle metode, interfejsi i ostalo su podlozni promenama u zavisnosti od potreba visih slojeva i uocavanja gresaka.
-Tema projekta je knjizara, u kojoj se moze obavljati kupovina knjiga.</br></br>
+Tema projekta je knjizara, u kojoj se moze obavljati kupovina knjiga. Korpa ne postoji na backendu u vidu tabele i entiteta, vec samo narudzbine. </br></br>
 Progress:
 1. Domain: 100% - Done
 2. EfDataAccess: 100% - Done
