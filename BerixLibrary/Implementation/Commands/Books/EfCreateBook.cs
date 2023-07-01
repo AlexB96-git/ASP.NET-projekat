@@ -34,9 +34,22 @@ namespace Implementation.Commands.Books
         {
             _validator.ValidateAndThrow(request);
 
+            var book = new Book { Title = request.Title, Language = request.Language, Description = request.Description, ReleaseDate = request.ReleaseDate };
+
             var authors = _dbContext.Authors.Where(x => request.AuthorIds.Any(y => y == x.Id));
+            var bookAuthors = new List<BookAuthor>();
+            foreach (var author in authors)
+            {
+                bookAuthors.Add(new BookAuthor { Author=author, Book=book });
+            }
+
             var genres = _dbContext.Genres.Where(x => request.GenreIds.Any(y => y == x.Id));
-            var book = new Book { Title = request.Title, Language = request.Language, Description=request.Description, ReleaseDate = request.ReleaseDate };
+            var bookGenres = new List<BookGenre>();
+            foreach (var genre in genres)
+            {
+                bookGenres.Add(new BookGenre { Genre = genre, Book = book });
+            }
+
             var bookPrice = new BookPrice
             {
                 Price = request.Price,
@@ -46,6 +59,8 @@ namespace Implementation.Commands.Books
 
             _dbContext.Books.Add(book);
             _dbContext.BookPrices.Add(bookPrice);
+            _dbContext.BookAuthors.AddRange(bookAuthors);
+            _dbContext.BookGenres.AddRange(bookGenres);
             _dbContext.SaveChanges();
         }
     }
