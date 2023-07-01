@@ -13,7 +13,7 @@ Progress:
 2. EfDataAccess: 100% - Done
 3. Application: 100% - Done
 4. Implementation: 92% - ongoing (6 queries left)
-5. Api: 79% - ongoing (3 controllers left, 1 controller(Book) -> put method not working correctly)
+5. Api: 83% - ongoing (3 controllers left, 1 controller(Book) -> put method is not changing authors and genres)
 
 <hr></hr>
 
@@ -35,7 +35,7 @@ Uputstvo za pregledaca: </br>
 ![image](https://github.com/AlexB96-git/ASP.NET-projekat/assets/112824193/b1ea152e-4ced-4947-aff0-86846bd5ab34)</br></br>
 3. Registracija ce se vrsiti tako sto ce se neautentifikovanom korisniku dodati privilegija da moze da doda user-a. -- not implemented, next to be implemented</br>
 4. Trenutno je odradjeno 6/9 entiteta, sa sve validacijama i proverama i 5 endpoint-eva. Sve komande su napravljene samo su kontroleri ostali, i par querija za get.
-5. Ono sto je ostalo neimplementirano za sada: </br>Entitet Book (put), </br>Entitet User (fale kontroler i queriji za get), </br>Entitet Log (isto fale kontroler i queriji za get), </br>Entitet Order (isto fale kontroler i queriji za get).
+5. Ono sto je ostalo neimplementirano za sada: </br>Entitet User (fale kontroler i queriji za get), </br>Entitet Log (isto fale kontroler i queriji za get), </br>Entitet Order (isto fale kontroler i queriji za get).
 
 <hr></hr>
 
