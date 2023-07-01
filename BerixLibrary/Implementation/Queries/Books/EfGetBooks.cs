@@ -3,6 +3,7 @@ using Application.DTOs.Books;
 using Application.Queries.Books;
 using AutoMapper;
 using EFDataAccess;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,11 @@ namespace Implementation.Queries.Books
 
         public IEnumerable<BookDTO> Execute(string searchTerm)
         {
-            var query = _dbContext.Books.AsQueryable();
+            var query = _dbContext.Books
+                .Include(book=>book.Authors).ThenInclude(author=> author.Author)
+                .Include(book=>book.Genres).ThenInclude(genre=>genre.Genre)
+                .Include(book=>book.Prices)
+                .AsQueryable();
 
             if (!string.IsNullOrEmpty(searchTerm))
             {

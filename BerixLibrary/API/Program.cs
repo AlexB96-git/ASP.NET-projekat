@@ -172,6 +172,7 @@ builder.Services.AddTransient<IGetBooksQuery, EfGetBooks>();
 
 //#region Validators
 builder.Services.AddTransient<BookDTOValidator>();
+builder.Services.AddTransient<BookInsertDTOValidator>();
 builder.Services.AddTransient<AuthorDTOValidator>();
 builder.Services.AddTransient<GenreDTOValidator>();
 //builder.Services.AddTransient<UserDTOValidator>();

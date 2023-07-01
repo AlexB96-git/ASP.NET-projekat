@@ -5,6 +5,7 @@ using Application.Queries.Books;
 using AutoMapper;
 using Domain;
 using EFDataAccess;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,11 @@ namespace Implementation.Queries.Books
 
         public BookDTO Execute(int id)
         {
-            var book = _dbContext.Books.Find(id);
+            var books = _dbContext.Books
+                .Include(book => book.Authors).ThenInclude(author => author.Author)
+                .Include(book => book.Genres).ThenInclude(genre => genre.Genre)
+                .Include(book => book.Prices);
+            var book = books.Select(x=>x).Where(x=>x.Id==id).FirstOrDefault();
 
             if (book == null)
             {

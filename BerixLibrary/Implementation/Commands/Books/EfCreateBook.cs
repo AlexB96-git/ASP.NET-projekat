@@ -17,26 +17,35 @@ namespace Implementation.Commands.Books
     {
         private readonly IMapper _mapper;
         private readonly DBKnjizaraContext _dbContext;
-        private readonly BookDTOValidator _validator;
+        private readonly BookInsertDTOValidator _validator;
 
         public int Id => 16;
 
         public string Name => "Create Book";
 
-        public EfCreateBook(IMapper mapper, DBKnjizaraContext dbContext, BookDTOValidator validator)
+        public EfCreateBook(IMapper mapper, DBKnjizaraContext dbContext, BookInsertDTOValidator validator)
         {
             _mapper = mapper;
             _dbContext = dbContext;
             _validator = validator;
         }
 
-        public void Execute(BookDTO request)
+        public void Execute(BookInsertDTO request)
         {
-            var book = _mapper.Map<Book>(request);
-
             _validator.ValidateAndThrow(request);
 
-            _dbContext.Add(book);
+            var authors = _dbContext.Authors.Where(x => request.AuthorIds.Any(y => y == x.Id));
+            var genres = _dbContext.Genres.Where(x => request.GenreIds.Any(y => y == x.Id));
+            var book = new Book { Title = request.Title, Language = request.Language, Description=request.Description, ReleaseDate = request.ReleaseDate };
+            var bookPrice = new BookPrice
+            {
+                Price = request.Price,
+                Book = book
+            };
+
+
+            _dbContext.Books.Add(book);
+            _dbContext.BookPrices.Add(bookPrice);
             _dbContext.SaveChanges();
         }
     }

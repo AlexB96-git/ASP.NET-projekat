@@ -41,7 +41,7 @@ namespace API.Controllers
 
         // POST api/<BookController>
         [HttpPost]
-        public IActionResult Post([FromBody] BookDTO useCase, [FromServices] IAddBookCommand command)
+        public IActionResult Post([FromBody] BookInsertDTO useCase, [FromServices] IAddBookCommand command)
         {
             _executor.ExecuteCommand(command, useCase);
             return StatusCode(StatusCodes.Status201Created);
