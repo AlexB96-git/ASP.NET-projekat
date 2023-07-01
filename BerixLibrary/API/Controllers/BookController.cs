@@ -49,9 +49,8 @@ namespace API.Controllers
 
         // PUT api/<BookController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] BookDTO dto, [FromServices] IEditBookCommand command)
+        public IActionResult Put(int id, [FromBody] BookUpdateDTO dto, [FromServices] IEditBookCommand command)
         {
-            dto.Id = id;
             _executor.ExecuteCommand(command, dto);
             return StatusCode(StatusCodes.Status204NoContent);
         }
