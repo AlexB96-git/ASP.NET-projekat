@@ -7,7 +7,7 @@ namespace EFDataAccess
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=beri\mojdbserver01;Initial Catalog=BerixKnjiara;Integrated Security=True");
+            optionsBuilder.UseSqlServer(@"Data Source=beri\mojdbserver01;Initial Catalog=BerixKnjizara;Integrated Security=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

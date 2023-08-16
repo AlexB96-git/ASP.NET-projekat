@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFDataAccess.Migrations
 {
     [DbContext(typeof(DBKnjizaraContext))]
-    [Migration("20230613131818_InitialDatabaseSchema")]
+    [Migration("20230816104022_InitialDatabaseSchema")]
     partial class InitialDatabaseSchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

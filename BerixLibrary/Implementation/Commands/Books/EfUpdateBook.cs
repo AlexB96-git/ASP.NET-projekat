@@ -6,6 +6,7 @@ using Domain;
 using EFDataAccess;
 using FluentValidation;
 using Implementation.Validators;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -35,11 +36,15 @@ namespace Implementation.Commands.Books
 
         public void Execute(BookUpdateDTO request)
         {
-            var book = _dbContext.Books.Find(request.Id);
+            var books = _dbContext.Books
+                .Include(book => book.Authors).ThenInclude(author => author.Author)
+                .Include(book => book.Genres).ThenInclude(genre => genre.Genre)
+                .Include(book => book.Prices);
+            var book = books.Select(x => x).Where(x => x.Id == request.Id).FirstOrDefault();
 
             if (book == null)
             {
-                throw new EntityNotFoundException(Id, typeof(Book));
+                throw new EntityNotFoundException(request.Id, typeof(Book));
             }
 
             _validator.ValidateAndThrow(request);
@@ -78,13 +83,81 @@ namespace Implementation.Commands.Books
                 changed = true;
             }
 
-            //genres
-            //authors
+            if(checkForChangeinAuthors(request.AuthorIds, request, book))
+            {
+                var authors = new List<Author>();
+                foreach(int authorId in request.AuthorIds)
+                {
+                    authors.Add(_dbContext.Authors.Find(authorId));
+                }
+
+                var authorBooks = new List<BookAuthor>();
+                foreach(Author author in authors)
+                {
+                    authorBooks.Add(new BookAuthor { Book=book, Author = author});
+                }
+
+                book.Authors = authorBooks;
+                changed = true;
+            }
+
+            if(checkForChangeinGenres(request.GenreIds, request, book))
+            {
+                var genres = new List<Genre>();
+                foreach(int genreId in request.GenreIds)
+                {
+                    genres.Add(_dbContext.Genres.Find(genreId));
+                }
+
+                var genreBooks = new List<BookGenre>();
+                foreach(Genre genre in genres)
+                {
+                    genreBooks.Add(new BookGenre { Book=book, Genre = genre});
+                }
+
+                book.Genres = genreBooks;
+                changed = true;
+            }
 
             if (changed)
             {
                 _dbContext.SaveChanges();
             }
+        }
+
+        private bool checkForChangeinAuthors(IEnumerable<int> newAuthorIds, BookUpdateDTO book, Book currentBook)
+        {
+            for(int i = 0; i < newAuthorIds.Count(); i++)
+            {
+                var currentBookAuthors = _mapper.Map<BookDTO>(currentBook).Authors;
+
+                if(currentBookAuthors.Any(x=> !newAuthorIds.Contains(x.Id))){
+                    return true;
+                }
+
+                if(newAuthorIds.Any(x=> !currentBookAuthors.Any(a=>a.Id==x))){
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        private bool checkForChangeinGenres(IEnumerable<int> newGenreIds, BookUpdateDTO book, Book currentBook)
+        {
+            for(int i = 0; i < newGenreIds.Count(); i++)
+            {
+                var currentBookGenres = _mapper.Map<BookDTO>(currentBook).Genres;
+
+                if(currentBookGenres.Any(x=> !newGenreIds.Contains(x.Id))){
+                    return true;
+                }
+
+                if(newGenreIds.Any(x=> !currentBookGenres.Any(a=>a.Id==x))){
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
