@@ -47,6 +47,25 @@ namespace Implementation.Commands.Books
                 throw new EntityNotFoundException(request.Id, typeof(Book));
             }
 
+            foreach(int authorId in request.AuthorIds)
+            {
+                var author = _dbContext.Authors.Find(authorId);
+
+                if (author == null)
+                {
+                    throw new EntityNotFoundException(authorId, typeof(Author));
+                }
+            }
+            foreach(int genreId in request.GenreIds)
+            {
+                var genre = _dbContext.Genres.Find(genreId);
+
+                if (genre == null)
+                {
+                    throw new EntityNotFoundException(genreId, typeof(Genre));
+                }
+            }
+
             _validator.ValidateAndThrow(request);
 
             var changed = false;
