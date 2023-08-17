@@ -41,15 +41,15 @@ namespace API.Controllers
 
         // POST api/<UserController>
         [HttpPost]
-        public IActionResult Post([FromBody] UserDTO useCase, [FromServices] IAddUserCommand command)
+        public IActionResult Post([FromBody] UserInsertDTO dto, [FromServices] IAddUserCommand command)
         {
-            _executor.ExecuteCommand(command, useCase);
+            _executor.ExecuteCommand(command, dto);
             return StatusCode(StatusCodes.Status201Created);
         }
 
         // PUT api/<UserController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] UserDTO dto, [FromServices] IEditUserCommand command)
+        public IActionResult Put(int id, [FromBody] UserUpdateDTO dto, [FromServices] IEditUserCommand command)
         {
             _executor.ExecuteCommand(command, dto);
             return StatusCode(StatusCodes.Status204NoContent);

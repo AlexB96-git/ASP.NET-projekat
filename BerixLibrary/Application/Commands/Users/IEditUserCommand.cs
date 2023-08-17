@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Users
 {
-    public interface IEditUserCommand: ICommand<UserDTO>
+    public interface IEditUserCommand: ICommand<UserUpdateDTO>
     {
     }
 }

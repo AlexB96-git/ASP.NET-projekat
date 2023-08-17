@@ -71,6 +71,8 @@ namespace API.Controllers
                 new UseCase { Name = "Get Author" },
                 new UseCase { Name = "Get Books" },
                 new UseCase { Name = "Get Book" },
+                new UseCase { Name = "Get Users" },
+                new UseCase { Name = "Get User" },
             };
 
             var roles = new List<Role>

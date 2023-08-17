@@ -17,26 +17,26 @@ namespace Implementation.Commands.Users
     {
         private readonly IMapper _mapper;
         private readonly DBKnjizaraContext _dbContext;
-        private readonly UserDTOValidator _validator;
+        private readonly UserInsertDTOValidator _validator;
 
         public int Id => 19;
 
         public string Name => "Create User";
 
-        public EfCreateUser(IMapper mapper, DBKnjizaraContext dbContext, UserDTOValidator validator)
+        public EfCreateUser(IMapper mapper, DBKnjizaraContext dbContext, UserInsertDTOValidator validator)
         {
             _mapper = mapper;
             _dbContext = dbContext;
             _validator = validator;
         }
 
-        public void Execute(UserDTO request)
+        public void Execute(UserInsertDTO request)
         {
-            var user = _mapper.Map<User>(request);
-
             _validator.ValidateAndThrow(request);
 
-            _dbContext.Add(user);
+            var user = _mapper.Map<User>(request);
+
+            _dbContext.Users.Add(user);
             _dbContext.SaveChanges();
         }
     }

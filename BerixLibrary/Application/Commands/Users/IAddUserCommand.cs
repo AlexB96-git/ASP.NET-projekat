@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Users
 {
-    public interface IAddUserCommand: ICommand<UserDTO>
+    public interface IAddUserCommand: ICommand<UserInsertDTO>
     {
     }
 }

@@ -37,6 +37,8 @@ using Application.Queries.Authors;
 using Implementation.Queries.Authors;
 using Application.Queries.Books;
 using Implementation.Queries.Books;
+using Application.Queries.Users;
+using Implementation.Queries.Users;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -107,11 +109,10 @@ builder.Services.AddTransient<IEmailSender, SmtpEmailSender>();
 builder.Services.AddTransient<DBKnjizaraContext>();
 
 //ispod je za automapper
-
 builder.Services.AddAutoMapper(typeof(EfCreateBook).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateAuthor).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateGenre).Assembly);
-//builder.Services.AddAutoMapper(typeof(EfCreateUser).Assembly);
+builder.Services.AddAutoMapper(typeof(EfCreateUser).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateUseCase).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateShippingMethod).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateRole).Assembly);
@@ -164,11 +165,13 @@ builder.Services.AddTransient<IGetBookQuery, EfGetBook>();
 builder.Services.AddTransient<IGetBooksQuery, EfGetBooks>();
 #endregion
 
-//#region Users
-//builder.Services.AddTransient<IAddUserCommand, EfCreateUser>();
-//builder.Services.AddTransient<IDeleteUserCommand, EfDeleteUser>();
-//builder.Services.AddTransient<IEditUserCommand, EfUpdateUser>();
-//#endregion
+#region Users
+builder.Services.AddTransient<IAddUserCommand, EfCreateUser>();
+builder.Services.AddTransient<IDeleteUserCommand, EfDeleteUser>();
+builder.Services.AddTransient<IEditUserCommand, EfUpdateUser>();
+builder.Services.AddTransient<IGetUsersQuery, EfGetUsers>();
+builder.Services.AddTransient<IGetUserQuery, EfGetUser>();
+#endregion
 
 //#region Validators
 builder.Services.AddTransient<BookDTOValidator>();
@@ -176,7 +179,9 @@ builder.Services.AddTransient<BookInsertDTOValidator>();
 builder.Services.AddTransient<BookUpdateDTOValidator>();
 builder.Services.AddTransient<AuthorDTOValidator>();
 builder.Services.AddTransient<GenreDTOValidator>();
-//builder.Services.AddTransient<UserDTOValidator>();
+builder.Services.AddTransient<UserDTOValidator>();
+builder.Services.AddTransient<UserInsertDTOValidator>();
+builder.Services.AddTransient<UserUpdateDTOValidator>();
 //builder.Services.AddTransient<LogDTOValidator>();
 builder.Services.AddTransient<RoleDTOValidator>();
 builder.Services.AddTransient<ShippingMethodDTOValidator>();
