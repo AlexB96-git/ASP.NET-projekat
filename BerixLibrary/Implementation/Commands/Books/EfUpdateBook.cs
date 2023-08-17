@@ -47,6 +47,9 @@ namespace Implementation.Commands.Books
                 throw new EntityNotFoundException(request.Id, typeof(Book));
             }
 
+
+            _validator.ValidateAndThrow(request);
+
             foreach(int authorId in request.AuthorIds)
             {
                 var author = _dbContext.Authors.Find(authorId);
@@ -65,8 +68,6 @@ namespace Implementation.Commands.Books
                     throw new EntityNotFoundException(genreId, typeof(Genre));
                 }
             }
-
-            _validator.ValidateAndThrow(request);
 
             var changed = false;
 

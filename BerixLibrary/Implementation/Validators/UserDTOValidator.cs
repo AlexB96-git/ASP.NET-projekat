@@ -11,11 +11,6 @@ namespace Implementation.Validators
 {
     public class UserDTOValidator: AbstractValidator<UserDTO>
     {
-        /*
-        public RoleDTO Role { get; set; }
-
-
-         */
         public UserDTOValidator(DBKnjizaraContext dbContext)
         {
             RuleFor(x => x.FirstName)

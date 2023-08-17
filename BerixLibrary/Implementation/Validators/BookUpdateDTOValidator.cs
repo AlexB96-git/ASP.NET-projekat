@@ -1,4 +1,5 @@
 ﻿using Application.DTOs.Books;
+using EFDataAccess;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace Implementation.Validators
 {
     public class BookUpdateDTOValidator: AbstractValidator<BookUpdateDTO>
     {
+        private DBKnjizaraContext _dbKnjizara = new DBKnjizaraContext();
         public BookUpdateDTOValidator()
         {
             RuleFor(x => x.Title)
@@ -35,12 +37,21 @@ namespace Implementation.Validators
             RuleFor(x => x.AuthorIds)
                 .NotEmpty()
                 .WithMessage("Book Authors must not be empty");
+            RuleFor(x => x.AuthorIds)
+                .Must(authorIds => authorIds.All(id => _dbKnjizara.Authors.Any(a => a.Id == id)))
+                .WithMessage("One or more Author ids don't exist in database.");
             RuleFor(x => x.GenreIds)
                 .NotEmpty()
                 .WithMessage("Book Authors must not be empty");
+            RuleFor(x => x.GenreIds)
+                .Must(genreIds => genreIds.All(id => _dbKnjizara.Genres.Any(g => g.Id == id)))
+                .WithMessage("One or more Genre ids don't exist in database.");
             RuleFor(x => x.Price)
                 .NotEmpty()
                 .WithMessage("Book Price must not be empty");
+            RuleFor(x => x.Id)
+                .NotEmpty()
+                .WithMessage("Book id must be inputted");
         }
 
         private bool IsDateInFuture(DateTime date)
