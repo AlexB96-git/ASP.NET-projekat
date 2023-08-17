@@ -12,7 +12,7 @@ Progress:
 1. Domain: 100% - Done
 2. EfDataAccess: 100% - Done
 3. Application: 100% - Done
-4. Implementation: 92% - ongoing (6 queries left)
+4. Implementation: 95% - ongoing (4 queries left)
 5. Api: 90% - ongoing (2 controllers left, Log and Order}
 
 <hr></hr>
