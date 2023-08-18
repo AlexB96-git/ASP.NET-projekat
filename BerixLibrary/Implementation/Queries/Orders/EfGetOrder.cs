@@ -1,5 +1,11 @@
 ﻿using Application.DTOs.Orders;
+using Application.DTOs.Users;
+using Application.Exceptions;
 using Application.Queries.Orders;
+using AutoMapper;
+using Domain;
+using EFDataAccess;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +16,35 @@ namespace Implementation.Queries.Orders
 {
     public class EfGetOrder : IGetOrderQuery
     {
-        public int Id => throw new NotImplementedException();
+        private readonly DBKnjizaraContext _dbContext;
+        private readonly IMapper _mapper;
 
-        public string Name => throw new NotImplementedException();
+        public int Id => 43;
 
-        public OrderDTO Execute(int execute)
+        public string Name => "Get Order";
+
+        public EfGetOrder(DBKnjizaraContext dbContext, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _dbContext = dbContext;
+            _mapper = mapper;
+        }
+
+        public OrderDTO Execute(int id)
+        {
+            var orders = _dbContext.Orders
+                .Include(order => order.OrderInvoices).ThenInclude(orderInvoice => orderInvoice.Book)
+                .Include(order => order.Customer)
+                .Include(order => order.ShippingMethod);
+            var order = orders.Select(x => x).Where(x => x.Id == id).FirstOrDefault();
+
+            if (order == null)
+            {
+                throw new EntityNotFoundException(id, typeof(User));
+            }
+
+            var response = _mapper.Map<OrderDTO>(order);
+
+            return response;
         }
     }
 }

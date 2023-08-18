@@ -10,7 +10,6 @@ namespace Application.DTOs.Orders
     public class OrderInvoiceInsertDTO
     {
         public int BookId { get; set; }
-        public int OrderId { get; set; }
         public int NumberOfItems { get; set; }
     }
 }

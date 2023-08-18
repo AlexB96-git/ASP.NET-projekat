@@ -43,6 +43,7 @@ using Implementation.Commands.Orders;
 using Application.Commands.Orders;
 using Application.Queries.Orders;
 using Implementation.Queries.Orders;
+using Implementation.Profiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -112,7 +113,7 @@ builder.Services.AddTransient<IEmailSender, SmtpEmailSender>();
 
 builder.Services.AddTransient<DBKnjizaraContext>();
 
-//ispod je za automapper
+#region AutoMapper
 builder.Services.AddAutoMapper(typeof(EfCreateBook).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateAuthor).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateGenre).Assembly);
@@ -120,7 +121,8 @@ builder.Services.AddAutoMapper(typeof(EfCreateUser).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateUseCase).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateShippingMethod).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateRole).Assembly);
-builder.Services.AddAutoMapper(typeof(EfCreateOrder).Assembly);
+builder.Services.AddAutoMapper(typeof(EfCreateOrder).Assembly); 
+#endregion
 
 #region UseCase
 builder.Services.AddTransient<IAddUseCaseCommand, EfCreateUseCase>();

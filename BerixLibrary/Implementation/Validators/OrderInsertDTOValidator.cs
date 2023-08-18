@@ -12,7 +12,15 @@ namespace Implementation.Validators
     {
         public OrderInsertDTOValidator()
         {
-            
+            RuleFor(x=>x.OrderInvoices)
+                .NotEmpty()
+                .WithMessage("There is no item contained in this bill");
+            RuleFor(x => x.ShippingMethodId)
+                .NotEmpty()
+                .WithMessage("No shipping method has been selected");
+            RuleFor(x => x.CustomerId)
+                .NotEmpty()
+                .WithMessage("Customer is not selected");
         }
     }
 }

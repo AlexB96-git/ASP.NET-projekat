@@ -1,5 +1,9 @@
 ﻿using Application.DTOs.Orders;
+using Application.DTOs.Users;
 using Application.Queries.Orders;
+using AutoMapper;
+using EFDataAccess;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +14,36 @@ namespace Implementation.Queries.Orders
 {
     public class EfGetOrders : IGetOrdersQuery
     {
-        public int Id => throw new NotImplementedException();
+        private readonly DBKnjizaraContext _dbContext;
+        private readonly IMapper _mapper;
+        public int Id => 42;
 
-        public string Name => throw new NotImplementedException();
+        public string Name => "Get Books";
 
-        public IEnumerable<OrderDTO> Execute(string execute)
+        public EfGetOrders(DBKnjizaraContext dbContext, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _dbContext = dbContext;
+            _mapper = mapper;
+        }
+
+        public IEnumerable<OrderDTO> Execute(string searchTerm)
+        {
+            var query = _dbContext.Orders
+                .Include(order => order.OrderInvoices).ThenInclude(orderInvoice=>orderInvoice.Book)
+                .Include(order => order.Customer)
+                .Include(order=>order.ShippingMethod)
+                .AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                query = query.Where(x => x.Customer.FirstName.Contains(searchTerm) || x.Customer.LastName.Contains(searchTerm));
+            }
+            else
+            {
+
+            }
+
+            return query.Select(x => _mapper.Map<OrderDTO>(x));
         }
     }
 }

@@ -32,7 +32,7 @@ namespace Implementation.Commands.Orders
 
         public void Execute(OrderInsertDTO request)
         {
-            var order = _mapper.Map<OrderInsertDTO>(request);
+            var order = _mapper.Map<Order>(request);
 
             _validator.ValidateAndThrow(request);
 
