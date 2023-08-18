@@ -12,7 +12,7 @@ Progress:
 1. Domain: 99% - Done (Mozda ne bi bilo lose dodati polje "current_price" u order invoice kako bi se cuvala cena po kojoj se knjiga prodavala, preko triggera, kako ne bi moralo da se pretrazuje po datumima. Ovo svakako nece biti implementirano jer bi iziskivalo razlicite dto-e za upis i ispis i nema potreba za svrhe ovog projekta to raditi)
 2. EfDataAccess: 99% - Done
 3. Application: 100% - Done
-4. Implementation: 95% - ongoing (4 queries left)
+4. Implementation: 98% - ongoing (2 queries left)
 5. Api: 95% - ongoing (1 controller left, Log)
 
 <hr></hr>
