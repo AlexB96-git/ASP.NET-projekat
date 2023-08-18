@@ -39,6 +39,10 @@ using Application.Queries.Books;
 using Implementation.Queries.Books;
 using Application.Queries.Users;
 using Implementation.Queries.Users;
+using Implementation.Commands.Orders;
+using Application.Commands.Orders;
+using Application.Queries.Orders;
+using Implementation.Queries.Orders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -89,7 +93,7 @@ builder.Services.AddTransient<IApplicationActor>(x =>
         {
             Id = 3,
             Identity = "Unauthorised actor",
-            AllowedUseCases = new List<int> {  }
+            AllowedUseCases = new List<int> { 19 }
         };
 
         return unauthorisedUser;
@@ -116,6 +120,7 @@ builder.Services.AddAutoMapper(typeof(EfCreateUser).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateUseCase).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateShippingMethod).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateRole).Assembly);
+builder.Services.AddAutoMapper(typeof(EfCreateOrder).Assembly);
 
 #region UseCase
 builder.Services.AddTransient<IAddUseCaseCommand, EfCreateUseCase>();
@@ -173,7 +178,16 @@ builder.Services.AddTransient<IGetUsersQuery, EfGetUsers>();
 builder.Services.AddTransient<IGetUserQuery, EfGetUser>();
 #endregion
 
-//#region Validators
+#region Orders
+builder.Services.AddTransient<IAddOrderCommand, EfCreateOrder>();
+builder.Services.AddTransient<IDeleteOrderCommand, EfDeleteOrder>();
+builder.Services.AddTransient<IEditOrderCommand, EfUpdateOrder>();
+builder.Services.AddTransient<IGetOrdersQuery, EfGetOrders>();
+builder.Services.AddTransient<IGetOrderQuery, EfGetOrder>();
+#endregion
+
+
+#region Validators
 builder.Services.AddTransient<BookDTOValidator>();
 builder.Services.AddTransient<BookInsertDTOValidator>();
 builder.Services.AddTransient<BookUpdateDTOValidator>();
@@ -186,8 +200,9 @@ builder.Services.AddTransient<UserUpdateDTOValidator>();
 builder.Services.AddTransient<RoleDTOValidator>();
 builder.Services.AddTransient<ShippingMethodDTOValidator>();
 builder.Services.AddTransient<UseCaseDTOValidator>();
-//builder.Services.AddTransient<OrderDTOValidator>();
-//#endregion
+builder.Services.AddTransient<OrderDTOValidator>();
+builder.Services.AddTransient<OrderInsertDTOValidator>();
+#endregion
 
 
 builder.Services.AddAuthentication(options =>

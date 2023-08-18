@@ -43,6 +43,11 @@ namespace API.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] UserInsertDTO dto, [FromServices] IAddUserCommand command)
         {
+            if (_actor.Id == 3)
+            {
+                dto.RoleId = 2;
+            }
+
             _executor.ExecuteCommand(command, dto);
             return StatusCode(StatusCodes.Status201Created);
         }

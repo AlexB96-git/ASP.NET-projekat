@@ -17,22 +17,22 @@ namespace Implementation.Commands.Orders
     {
         private readonly IMapper _mapper;
         private readonly DBKnjizaraContext _dbContext;
-        private readonly OrderDTOValidator _validator;
+        private readonly OrderInsertDTOValidator _validator;
 
         public int Id => 25;
 
         public string Name => "Create Order";
 
-        public EfCreateOrder(IMapper mapper, DBKnjizaraContext dbContext, OrderDTOValidator validator)
+        public EfCreateOrder(IMapper mapper, DBKnjizaraContext dbContext, OrderInsertDTOValidator validator)
         {
             _mapper = mapper;
             _dbContext = dbContext;
             _validator = validator;
         }
 
-        public void Execute(OrderDTO request)
+        public void Execute(OrderInsertDTO request)
         {
-            var order = _mapper.Map<Order>(request);
+            var order = _mapper.Map<OrderInsertDTO>(request);
 
             _validator.ValidateAndThrow(request);
 

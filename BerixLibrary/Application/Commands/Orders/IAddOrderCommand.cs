@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Orders
 {
-    public interface IAddOrderCommand: ICommand<OrderDTO>
+    public interface IAddOrderCommand: ICommand<OrderInsertDTO>
     {
     }
 }
