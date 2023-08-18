@@ -10,10 +10,10 @@ Podaci unutar bilo kog projekta, dakle metode, interfejsi i ostalo su podlozni p
 Tema projekta je knjizara, u kojoj se moze obavljati kupovina knjiga. Korpa ne postoji na backendu u vidu tabele i entiteta, vec samo narudzbine. </br></br>
 Progress:
 1. Domain: 99% - Done (Mozda ne bi bilo lose dodati polje "current_price" u order invoice kako bi se cuvala cena po kojoj se knjiga prodavala, preko triggera, kako ne bi moralo da se pretrazuje po datumima. Ovo svakako nece biti implementirano jer bi iziskivalo razlicite dto-e za upis i ispis i nema potreba za svrhe ovog projekta to raditi)
-2. EfDataAccess: 99% - Done
+2. EfDataAccess: 100% - Done
 3. Application: 100% - Done
-4. Implementation: 98% - ongoing (2 queries left)
-5. Api: 95% - ongoing (1 controller left, Log)
+4. Implementation: 100% - Done
+5. Api: 100% - Done
 
 <hr></hr>
 
@@ -33,9 +33,7 @@ Uputstvo za pregledaca: </br>
 1. Nakon povezivanja na bazu podataka (BerixKnjizara) pomocu odgovarajuceg konekcionog stringa i migriranja šeme (Fokusira se na EfDataAccess projekat u nugget konzoli, pozove se update-database), <b>Pokrenuti aplikaciju i pozvati InitialiseDatabase api</b>, metod post. Ovo ce postaviti pocetno stanje aplikacije, odnosno baze podataka, i vise nece biti potrebe pozivati ovaj metod osim u slucaju promene baze podataka. Ovaj poziv se ne autentifikuje.
 2. Login se obavlja tako sto se pozove Token kontroler i prosledi se objekat sa kredencijalima: {email: [email], password: [password]}. Zatim se taj token iskopira i nalepi se u Authorization formi u swaggeru. Voditi racuna da je forma unosa u tekstualno polje: "Bearer [token]". Detaljan flow koraka se nalazi na slici ispod. Kredencijali: </br></br>Neautorizovan korisnik, </br>Obican user: user@user.com, user123 - za sada nijedna privilegija </br>Admin: admin@admin.com, admin123 - sve privilegije</br></br>
 ![image](https://github.com/AlexB96-git/ASP.NET-projekat/assets/112824193/b1ea152e-4ced-4947-aff0-86846bd5ab34)</br></br>
-3. Registracija se vrsi tako sto se neautorizovanom korisniku doda pravo za dodavanje novog korisnika. Naravno, u slucaju da je u pitanju neautorizovan korisnik na backu se role id setuje na id obicnog korisnika bez obzira na to sta se posalje.</br>
-4. Trenutno je odradjeno 7/9 entiteta, sa sve validacijama i proverama i 5 endpoint-eva.
-5. Ono sto je ostalo neimplementirano za sada: </br>Entitet Log (fale kontroler i queriji za get), </br>Entitet Order (isto fale kontroler i queriji za get).
+3. Registracija se vrsi tako sto se neautorizovanom korisniku doda pravo za dodavanje novog korisnika. Naravno, u slucaju da je u pitanju korisnik koji nije admin na backu se role id setuje na id obicnog korisnika bez obzira na to sta se posalje.</br>
 
 <hr></hr>
 
@@ -44,7 +42,7 @@ Content:
 1.1. Baza Podataka je redukovana u smislu tabela koje bi sve mogla da ima (na primer odvojena tabela za jezike ciji bi odnos sa knjigom bio vise prema vise). Takodje zbog jednostavnosti: umesto uvodjenja vezivne tabele izmedju korisnika i uloga sto bi omogucilo da jedan korisnik ima istovremeno vise uloga, samim tim i privilegija, jedan korisnik moze imati samo jednu ulogu.</br>
 Ovo je uradjeno da bi se iole umanjio broj entiteta u projektu, a da se i dalje prikazu sve funkcionalnosti.</br>
 1.2. Izgled baze u MSSMS nakon sto se napravi preko migracija.</br></br>
-![image](https://github.com/AlexB96-git/ASP.NET-projekat/assets/112824193/4db951ab-f3c4-4368-bd00-da76a2b9d303)
+![image](https://github.com/AlexB96-git/ASP.NET-projekat/assets/112824193/a014d88a-9e55-4eff-bdb5-7860e211b7d4)
 2. Domain:</br>
 2.1. Domain obezbedjuje definisanje entiteta kakvi ce se cuvati u bazi podataka.</br>
 2.2. Struktura domena: </br></br>
