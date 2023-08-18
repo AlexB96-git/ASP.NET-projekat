@@ -26,9 +26,9 @@ namespace API.Controllers
 
         // GET: api/<UserController>
         [HttpGet]
-        public IActionResult Get([FromServices] IGetOrdersQuery query, [FromQuery] string? searchTerm = null)
+        public IActionResult Get([FromServices] IGetOrdersQuery query, [FromQuery] string? UserName = null)
         {
-            return Ok(_executor.ExecuteQuery(query, searchTerm));
+            return Ok(_executor.ExecuteQuery(query, UserName));
         }
 
         // GET api/<UserController>/5

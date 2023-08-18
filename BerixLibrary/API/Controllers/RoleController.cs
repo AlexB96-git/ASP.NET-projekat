@@ -23,9 +23,9 @@ namespace API.Controllers
 
         // GET: api/<RoleController>
         [HttpGet]
-        public IActionResult Get([FromServices] IGetRolesQuery query, [FromQuery] string? searchTerm = null)
+        public IActionResult Get([FromServices] IGetRolesQuery query, [FromQuery] string? RoleName = null)
         {
-            return Ok(_executor.ExecuteQuery(query, searchTerm));
+            return Ok(_executor.ExecuteQuery(query, RoleName));
         }
 
         // GET api/<RoleController>/5

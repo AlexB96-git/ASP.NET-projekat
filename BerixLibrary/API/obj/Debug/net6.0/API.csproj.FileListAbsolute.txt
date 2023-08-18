@@ -73,3 +73,4 @@ C:\Users\aleks_eg16h3h\Desktop\ASP\Berix-Knjizara, ASP .NET\ASP.NET-projekat\Ber
 C:\Users\aleks_eg16h3h\Desktop\ASP\Berix-Knjizara, ASP .NET\ASP.NET-projekat\BerixLibrary\API\obj\Debug\net6.0\API.pdb
 C:\Users\aleks_eg16h3h\Desktop\ASP\Berix-Knjizara, ASP .NET\ASP.NET-projekat\BerixLibrary\API\obj\Debug\net6.0\API.genruntimeconfig.cache
 C:\Users\aleks_eg16h3h\Desktop\ASP\Berix-Knjizara, ASP .NET\ASP.NET-projekat\BerixLibrary\API\obj\Debug\net6.0\ref\API.dll
+C:\Users\aleks_eg16h3h\Desktop\ASP\Berix-Knjizara, ASP .NET\ASP.NET-projekat\BerixLibrary\API\obj\Debug\net6.0\API.MvcApplicationPartsAssemblyInfo.cs

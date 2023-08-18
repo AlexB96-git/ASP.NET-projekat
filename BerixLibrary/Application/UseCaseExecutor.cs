@@ -18,7 +18,6 @@ namespace Application
             this.logger = logger;
         }
 
-        //potrebno promeniti uslov mozda
         public void ExecuteCommand<TRequest>(
             ICommand<TRequest> command,
             TRequest request)
@@ -45,7 +44,6 @@ namespace Application
         {
             
                 logger.Log(query, actor, search);
-            //Console.WriteLine($"{DateTime.Now}: {actor.Identity} is trying to execute {query.Name} and get this data: { JsonConvert.SerializeObject(search)} ");
 
             if (!actor.AllowedUseCases.Contains(query.Id))
                 throw new UnauthorizedUseCaseException(query, actor);

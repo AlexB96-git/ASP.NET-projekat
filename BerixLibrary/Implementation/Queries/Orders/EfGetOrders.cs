@@ -36,7 +36,7 @@ namespace Implementation.Queries.Orders
 
             if (!string.IsNullOrEmpty(searchTerm))
             {
-                query = query.Where(x => x.Customer.FirstName.Contains(searchTerm) || x.Customer.LastName.Contains(searchTerm));
+                query = query.Where(x => (x.Customer.FirstName + " " + x.Customer.LastName).Contains(searchTerm));
             }
             else
             {

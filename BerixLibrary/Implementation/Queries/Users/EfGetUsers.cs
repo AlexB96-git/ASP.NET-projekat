@@ -35,7 +35,7 @@ namespace Implementation.Queries.Users
 
             if (!string.IsNullOrEmpty(searchTerm))
             {
-                query = query.Where(x => x.FirstName.Contains(searchTerm) || x.LastName.Contains(searchTerm));
+                query = query.Where(x => (x.FirstName + " " + x.LastName).Contains(searchTerm));
             }
             else
             {

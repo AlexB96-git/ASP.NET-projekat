@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Queries.Logs
 {
-    public interface IGetLogsQuery : IQuery<LogSearchDTO, IEnumerable<LogDTO>>
+    public interface IGetLogsQuery : IQuery<string, IEnumerable<LogDTO>>
     {
     }
 }

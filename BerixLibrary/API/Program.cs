@@ -44,6 +44,9 @@ using Application.Commands.Orders;
 using Application.Queries.Orders;
 using Implementation.Queries.Orders;
 using Implementation.Profiles;
+using Implementation.Queries.Logs;
+using Application.Queries.Logs;
+using Implementation.Commands.Logs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -122,6 +125,7 @@ builder.Services.AddAutoMapper(typeof(EfCreateUseCase).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateShippingMethod).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateRole).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateOrder).Assembly); 
+builder.Services.AddAutoMapper(typeof(EfCreateLog).Assembly); 
 #endregion
 
 #region UseCase
@@ -188,6 +192,9 @@ builder.Services.AddTransient<IGetOrdersQuery, EfGetOrders>();
 builder.Services.AddTransient<IGetOrderQuery, EfGetOrder>();
 #endregion
 
+#region Logs
+builder.Services.AddTransient<IGetLogsQuery, EfGetLogs>();
+#endregion
 
 #region Validators
 builder.Services.AddTransient<BookDTOValidator>();
@@ -198,14 +205,13 @@ builder.Services.AddTransient<GenreDTOValidator>();
 builder.Services.AddTransient<UserDTOValidator>();
 builder.Services.AddTransient<UserInsertDTOValidator>();
 builder.Services.AddTransient<UserUpdateDTOValidator>();
-//builder.Services.AddTransient<LogDTOValidator>();
+builder.Services.AddTransient<LogDTOValidator>();
 builder.Services.AddTransient<RoleDTOValidator>();
 builder.Services.AddTransient<ShippingMethodDTOValidator>();
 builder.Services.AddTransient<UseCaseDTOValidator>();
 builder.Services.AddTransient<OrderDTOValidator>();
 builder.Services.AddTransient<OrderInsertDTOValidator>();
 #endregion
-
 
 builder.Services.AddAuthentication(options =>
 {

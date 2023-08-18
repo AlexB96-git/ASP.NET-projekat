@@ -23,9 +23,9 @@ namespace API.Controllers
 
         // GET: api/<UseCaseController>
         [HttpGet]
-        public IActionResult Get([FromServices] IGetUseCasesQuery query, [FromQuery] string? searchTerm = null)
+        public IActionResult Get([FromServices] IGetUseCasesQuery query, [FromQuery] string? UseCaseName = null)
         {
-            return Ok(_executor.ExecuteQuery(query, searchTerm));
+            return Ok(_executor.ExecuteQuery(query, UseCaseName));
         }
 
         // GET api/<UseCaseController>/5
