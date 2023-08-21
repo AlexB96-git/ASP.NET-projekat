@@ -95,8 +95,9 @@ builder.Services.AddTransient<IApplicationActor>(x =>
     {
         var unauthorisedUser = new JwtActor
         {
-            Id = 3,
-            Identity = "Unauthorised actor",
+            RoleId = 3,
+            Email = "Unauthorised actor",
+            UserId = 3,
             AllowedUseCases = new List<int> { 19 }
         };
 
@@ -110,6 +111,7 @@ builder.Services.AddTransient<IApplicationActor>(x =>
     return actor;
 });
 builder.Services.AddTransient<UseCaseExecutor>();
+builder.Services.AddTransient<DBKnjizaraContext>();
 builder.Services.AddTransient<IUseCaseLogger, SQLLogger>();
 builder.Services.AddTransient<JwtManager>();
 builder.Services.AddTransient<IEmailSender, SmtpEmailSender>();

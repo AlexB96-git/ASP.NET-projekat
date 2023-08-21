@@ -23,8 +23,8 @@ namespace Implementation.Logging
         {
             var log = new Log();
 
-            log.Actor = dbContext.Users.Find(actor.Id);
-            log.ActorId = actor.Id;
+            log.Actor = dbContext.Users.Find(actor.UserId);
+            log.ActorId = actor.UserId;
             log.UseCase = dbContext.UseCases.Find(useCase.Id);
             log.UseCaseId = useCase.Id;
             log.Data = JsonConvert.SerializeObject(useCaseData); //TO DO serialize properly

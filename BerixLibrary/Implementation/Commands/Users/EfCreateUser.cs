@@ -4,6 +4,7 @@ using AutoMapper;
 using Domain;
 using EFDataAccess;
 using FluentValidation;
+using Implementation.Password;
 using Implementation.Validators;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,7 @@ namespace Implementation.Commands.Users
             _validator.ValidateAndThrow(request);
 
             var user = _mapper.Map<User>(request);
+            user.Password = PasswordHandler.ecrypt(user.Password);
 
             _dbContext.Users.Add(user);
             _dbContext.SaveChanges();

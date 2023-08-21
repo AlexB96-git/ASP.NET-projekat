@@ -25,7 +25,7 @@ namespace Application
             //Console.WriteLine($"{DateTime.Now}: {actor.Identity} is trying to execute {command.Name} using data: " +
             //    $"{JsonConvert.SerializeObject(request)}");
 
-            if (actor.Id != 3)
+            if (actor.RoleId != 3)
             {
                 logger.Log(command, actor, request);
             }

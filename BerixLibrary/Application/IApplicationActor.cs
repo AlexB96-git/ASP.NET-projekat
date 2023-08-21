@@ -2,8 +2,9 @@
 {
         public interface IApplicationActor
         {
-            int Id { get; }
-            string Identity { get; }
+            string Email { get; }
+            int UserId { get; }
+            int RoleId { get; }
             IEnumerable<int> AllowedUseCases { get; }
         }
 }

@@ -28,6 +28,11 @@ namespace API.Controllers
         [HttpGet]
         public IActionResult Get([FromServices] IGetUsersQuery query, [FromQuery] string? UserName = null)
         {
+            if(_actor.RoleId != 1)
+            {
+                return Ok(_executor.ExecuteQuery(query, UserName).Where(x => x.Email == _actor.Email));
+            }
+
             return Ok(_executor.ExecuteQuery(query, UserName));
         }
 
@@ -43,7 +48,7 @@ namespace API.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] UserInsertDTO dto, [FromServices] IAddUserCommand command)
         {
-            if (_actor.Id == 3)
+            if (_actor.RoleId == 3)
             {
                 dto.RoleId = 2;
             }

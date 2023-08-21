@@ -38,9 +38,10 @@ namespace Api.Core
             }
             var actor = new JwtActor
             {
-                Id = user.Id,
+                RoleId = user.RoleId,
                 AllowedUseCases = userUseCases.Select(x => x.UseCaseId),
-                Identity = user.Email
+                Email = user.Email,
+                UserId = user.Id,
             };
 
             var issuer = "asp_api";
@@ -50,7 +51,7 @@ namespace Api.Core
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString(), ClaimValueTypes.String, issuer),
                 new Claim(JwtRegisteredClaimNames.Iss, "asp_api", ClaimValueTypes.String, issuer),
                 new Claim(JwtRegisteredClaimNames.Iat, DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(), ClaimValueTypes.Integer64, issuer),
-                new Claim("UserId", actor.Id.ToString(), ClaimValueTypes.String, issuer),
+                new Claim("UserId", actor.UserId.ToString(), ClaimValueTypes.String, issuer),
                 new Claim("ActorData", JsonConvert.SerializeObject(actor), ClaimValueTypes.String, issuer)
             };
 

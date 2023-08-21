@@ -251,13 +251,17 @@ namespace API.Controllers
             }
 
             //dodavanje nekih prava obicnom korisniku, za pocetak nista
-            //roleUseCases.Add(
-            //        new RoleUseCase
-            //        {
-            //            UseCase = UseCase.ElementAt,
-            //            Role = roles.First()
-            //        }
-            //    );
+            var allowedUsecaseIds = new List<int> { 21, 25, 26, 27, 30, 31, 34, 35, 36, 37, 38, 39, 41, 42, 43 }; //niz id-jeva usecase-ova koji su dozvoljeni za ovu rolu
+            foreach (var useCaseId in allowedUsecaseIds)
+            {
+                roleUseCases.Add(
+                    new RoleUseCase
+                    {
+                        UseCase = useCases.ElementAt(useCaseId-1),
+                        Role = roles.ElementAt(1)
+                    }
+                );
+            }
 
             _dbContext.ShippingMethods.AddRange(shippingMethods);
             _dbContext.UseCases.AddRange(useCases);

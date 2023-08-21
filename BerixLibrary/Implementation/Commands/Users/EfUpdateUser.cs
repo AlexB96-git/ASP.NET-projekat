@@ -6,6 +6,7 @@ using AutoMapper;
 using Domain;
 using EFDataAccess;
 using FluentValidation;
+using Implementation.Password;
 using Implementation.Validators;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -87,6 +88,7 @@ namespace Implementation.Commands.Users
 
             if (changed)
             {
+                user.Password = PasswordHandler.ecrypt(user.Password);
                 _dbContext.SaveChanges();
             }
         }
