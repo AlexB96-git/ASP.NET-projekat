@@ -61,6 +61,7 @@ namespace API.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] UserUpdateDTO dto, [FromServices] IEditUserCommand command)
         {
+            dto.Id = id;
             _executor.ExecuteCommand(command, dto);
             return StatusCode(StatusCodes.Status204NoContent);
         }
