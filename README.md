@@ -59,7 +59,8 @@ Ovo je uradjeno da bi se iole umanjio broj entiteta u projektu, a da se i dalje 
 ![image](https://github.com/AlexB96-git/ASP.NET-projekat/assets/112824193/8b73a6b8-6bc2-460d-a998-f7a26e6316e2)
 6. Api:</br>
 6.1. Api obezbedjuje komunikaciju i manipulaciju sa svim prethodnim slojevima.</br>
-6.2. Struuktura Api-ja ce biti kasnije postavljena.</br></br>
+6.2. Struktura Api-ja ce biti kasnije postavljena.</br></br>
+![image](https://github.com/AlexB96-git/ASP.NET-projekat/assets/112824193/133ace56-c263-4c22-a468-28b4c5a84277)
 7. Behind The Scenes:</br></br>
 7.1. Vibe</br>
 ![IMG_20230612_020608](https://github.com/AlexB96-git/ASP.NET-projekat/assets/112824193/38c99344-84f3-4f9b-9504-c4b9ba9a4cf5)</br></br>
