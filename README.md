@@ -5,8 +5,6 @@
 
 <hr></hr>
 
-Projekat nije u potpunosti kompletiran. Ispod se vodi evidencija onoga sto je trenutno uradjeno.
-Podaci unutar bilo kog projekta, dakle metode, interfejsi i ostalo su podlozni promenama u zavisnosti od potreba visih slojeva i uocavanja gresaka.
 Tema projekta je knjizara, u kojoj se moze obavljati kupovina knjiga. Korpa ne postoji na backendu u vidu tabele i entiteta, vec samo narudzbine. </br></br>
 Progress:
 1. Domain: 99% - Done (Mozda ne bi bilo lose dodati polje "current_price" u order invoice kako bi se cuvala cena po kojoj se knjiga prodavala, preko triggera, kako ne bi moralo da se pretrazuje po datumima. Ovo svakako nece biti implementirano jer bi iziskivalo razlicite dto-e za upis i ispis i nema potreba za svrhe ovog projekta to raditi)
@@ -31,7 +29,7 @@ Table Of Contents:
 
 Uputstvo za pregledaca: </br>
 1. Nakon povezivanja na bazu podataka (BerixKnjizara) pomocu odgovarajuceg konekcionog stringa i migriranja šeme (Fokusira se na EfDataAccess projekat u nugget konzoli, pozove se update-database), <b>Pokrenuti aplikaciju i pozvati InitialiseDatabase api</b>, metod post. Ovo ce postaviti pocetno stanje aplikacije, odnosno baze podataka, i vise nece biti potrebe pozivati ovaj metod osim u slucaju promene baze podataka. Ovaj poziv se ne autentifikuje.
-2. Login se obavlja tako sto se pozove Token kontroler i prosledi se objekat sa kredencijalima: {email: [email], password: [password]}. Zatim se taj token iskopira i nalepi se u Authorization formi u swaggeru. Voditi racuna da je forma unosa u tekstualno polje: "Bearer [token]". Detaljan flow koraka se nalazi na slici ispod. Kredencijali: </br></br>Neautorizovan korisnik, </br>Obican user: user@user.com, user123 - za sada nijedna privilegija </br>Admin: admin@admin.com, admin123 - sve privilegije</br></br>
+2. Login se obavlja tako sto se pozove Token kontroler i prosledi se objekat sa kredencijalima: {email: [email], password: [password]}. Zatim se taj token iskopira i nalepi se u Authorization formi u swaggeru. Voditi racuna da je forma unosa u tekstualno polje: "Bearer [token]". Detaljan flow koraka se nalazi na slici ispod. Kredencijali: </br></br>Neautorizovan korisnik - registracija, </br>Obican user: user@user.com, user123 - neke privilegije kao sto su: Create user, Update user, Create order, Update order, i sve za get osim rola, usecases i logs. Naravno dobija samo podatke vezane za njegov id. </br>Admin: admin@admin.com, admin123 - sve privilegije</br></br>
 ![image](https://github.com/AlexB96-git/ASP.NET-projekat/assets/112824193/b1ea152e-4ced-4947-aff0-86846bd5ab34)</br></br>
 3. Registracija se vrsi tako sto se neautorizovanom korisniku doda pravo za dodavanje novog korisnika. Naravno, u slucaju da je u pitanju korisnik koji nije admin na backu se role id setuje na id obicnog korisnika bez obzira na to sta se posalje.</br>
 
