@@ -1,4 +1,5 @@
-﻿using Application.DTOs.Books;
+using Application.DTOs.Books;
+using EFDataAccess;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -8,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace Implementation.Validators
 {
-    public class BookInsertDTOValidator: AbstractValidator<BookInsertDTO>
-    {
+    public class BookInsertDTOValidator: AbstractValidator<BookInsertDTO> { 
+        private DBKnjizaraContext _dbKnjizara = new DBKnjizaraContext();
         public BookInsertDTOValidator()
         {
             RuleFor(x => x.Title)
@@ -17,16 +18,16 @@ namespace Implementation.Validators
                 .WithMessage("Book Title must not be empty")
                 .MaximumLength(50)
                 .WithMessage("Book Title must not be longer then 50 characters");
+            RuleFor(x => x.ImageSrc)
+                .NotEmpty()
+                .WithMessage("Book ImageSrc must not be empty")
+                .MaximumLength(50)
+                .WithMessage("Book ImageSrc must not be longer then 50 characters");
             RuleFor(x => x.Description)
                 .NotEmpty()
                 .WithMessage("Book Description must not be empty")
-                .MaximumLength(200)
-                .WithMessage("Book Description must not be longer then 200 characters");
-            RuleFor(x => x.Language)
-                .NotEmpty()
-                .WithMessage("Book Language must not be empty")
-                .MaximumLength(200)
-                .WithMessage("Book Language must not be longer then 30 characters");
+                .MaximumLength(2000)
+                .WithMessage("Book Description must not be longer then 2000 characters");
             RuleFor(x => x.ReleaseDate)
                 .NotEmpty()
                 .WithMessage("Book ReleaseDate must not be empty")
@@ -34,10 +35,19 @@ namespace Implementation.Validators
                 .WithMessage("Book ReleaseDate must be in the past");
             RuleFor(x => x.AuthorIds)
                 .NotEmpty()
-                .WithMessage("Book Authors must not be empty");
+                .WithMessage("Book Authors must not be empty")
+                .Must(authorIds => authorIds.All(id => _dbKnjizara.Authors.Any(a => a.Id == id)))
+                .WithMessage("One or more Author ids don't exist in database.");
             RuleFor(x => x.GenreIds)
                 .NotEmpty()
-                .WithMessage("Book Authors must not be empty");
+                .WithMessage("Book Authors must not be empty")
+                .Must(genreIds => genreIds.All(id => _dbKnjizara.Genres.Any(a => a.Id == id)))
+                .WithMessage("One or more Author ids don't exist in database."); ;
+            RuleFor(x => x.LanguageIds)
+                .NotEmpty()
+                .WithMessage("Book Languages must not be empty")
+                .Must(languageIds => languageIds.All(id => _dbKnjizara.Languages.Any(a => a.Id == id)))
+                .WithMessage("One or more Author ids don't exist in database."); ;
             RuleFor(x => x.Price)
                 .NotEmpty()
                 .WithMessage("Book Price must not be empty");

@@ -47,12 +47,27 @@ using Implementation.Profiles;
 using Implementation.Queries.Logs;
 using Application.Queries.Logs;
 using Implementation.Commands.Logs;
+using Implementation.Commands.Languages;
+using Application.Commands.Languages;
+using Application.Queries.Languages;
+using Implementation.Queries.Languages;
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+builder.Services.AddCors(options =>
+{
+  options.AddPolicy(name: MyAllowSpecificOrigins,
+    policy =>
+    {
+        policy.WithOrigins("http://localhost:4200")
+        .AllowAnyHeader();
+    });
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -128,6 +143,7 @@ builder.Services.AddAutoMapper(typeof(EfCreateShippingMethod).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateRole).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateOrder).Assembly); 
 builder.Services.AddAutoMapper(typeof(EfCreateLog).Assembly); 
+builder.Services.AddAutoMapper(typeof(EfCreateLanguage).Assembly); 
 #endregion
 
 #region UseCase
@@ -198,6 +214,14 @@ builder.Services.AddTransient<IGetOrderQuery, EfGetOrder>();
 builder.Services.AddTransient<IGetLogsQuery, EfGetLogs>();
 #endregion
 
+#region Languages
+builder.Services.AddTransient<IAddLanguageCommand, EfCreateLanguage>();
+builder.Services.AddTransient<IDeleteLanguageCommand, EfDeleteLanguage>();
+builder.Services.AddTransient<IEditLanguageCommand, EfUpdateLanguage>();
+builder.Services.AddTransient<IGetLanguagesQuery, EfGetLanguages>();
+builder.Services.AddTransient<IGetLanguageQuery, EfGetLanguage>();
+#endregion
+
 #region Validators
 builder.Services.AddTransient<BookDTOValidator>();
 builder.Services.AddTransient<BookInsertDTOValidator>();
@@ -213,7 +237,9 @@ builder.Services.AddTransient<ShippingMethodDTOValidator>();
 builder.Services.AddTransient<UseCaseDTOValidator>();
 builder.Services.AddTransient<OrderDTOValidator>();
 builder.Services.AddTransient<OrderInsertDTOValidator>();
+builder.Services.AddTransient<LanguageDTOValidator>();
 #endregion
+
 
 builder.Services.AddAuthentication(options =>
 {
@@ -242,6 +268,9 @@ builder.Services.AddAuthentication(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+//if (app.Environment.IsDevelopment())
+//{
+//}
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -255,6 +284,7 @@ app.MapControllers();
 
 
 app.UseRouting();
+app.UseCors(MyAllowSpecificOrigins);
 app.UseMiddleware<GlobalExceptionHandler>();
 
 app.UseAuthentication();

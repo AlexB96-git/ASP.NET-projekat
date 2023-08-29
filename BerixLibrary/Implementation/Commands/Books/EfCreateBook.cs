@@ -1,4 +1,4 @@
-﻿using Application.Commands.Books;
+using Application.Commands.Books;
 using Application.DTOs.Books;
 using AutoMapper;
 using Domain;
@@ -34,13 +34,19 @@ namespace Implementation.Commands.Books
         {
             _validator.ValidateAndThrow(request);
 
-            var book = new Book { Title = request.Title, Language = request.Language, Description = request.Description, ReleaseDate = request.ReleaseDate };
+            var book = new Book { Title = request.Title, Description = request.Description, ImageSrc=request.ImageSrc, ReleaseDate = request.ReleaseDate };
 
             var authors = _dbContext.Authors.Where(x => request.AuthorIds.Any(y => y == x.Id));
             var bookAuthors = new List<BookAuthor>();
             foreach (var author in authors)
             {
                 bookAuthors.Add(new BookAuthor { Author=author, Book=book });
+            }
+            var languages = _dbContext.Languages.Where(x => request.LanguageIds.Any(y => y == x.Id));
+            var bookLanguages = new List<BookLanguage>();
+            foreach (var language in languages)
+            {
+                bookLanguages.Add(new BookLanguage { Language=language, Book=book });
             }
 
             var genres = _dbContext.Genres.Where(x => request.GenreIds.Any(y => y == x.Id));
@@ -61,6 +67,7 @@ namespace Implementation.Commands.Books
             _dbContext.BookPrices.Add(bookPrice);
             _dbContext.BookAuthors.AddRange(bookAuthors);
             _dbContext.BookGenres.AddRange(bookGenres);
+            _dbContext.BookLanguages.AddRange(bookLanguages);
             _dbContext.SaveChanges();
         }
     }

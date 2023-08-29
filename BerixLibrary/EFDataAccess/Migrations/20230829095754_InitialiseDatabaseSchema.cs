@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EFDataAccess.Migrations
 {
-    public partial class InitialDatabaseSchema : Migration
+    public partial class InitialiseDatabaseSchema : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -36,8 +36,8 @@ namespace EFDataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Language = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(2000)", maxLength: 2000, nullable: false),
+                    ImageSrc = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ReleaseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -66,6 +66,24 @@ namespace EFDataAccess.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Genres", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Languages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Languages", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -192,6 +210,36 @@ namespace EFDataAccess.Migrations
                         name: "FK_BookGenres_Genres_GenreId",
                         column: x => x.GenreId,
                         principalTable: "Genres",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BookLanguages",
+                columns: table => new
+                {
+                    BookId = table.Column<int>(type: "int", nullable: false),
+                    LanguageId = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BookLanguages", x => new { x.BookId, x.LanguageId });
+                    table.ForeignKey(
+                        name: "FK_BookLanguages_Books_BookId",
+                        column: x => x.BookId,
+                        principalTable: "Books",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_BookLanguages_Languages_LanguageId",
+                        column: x => x.LanguageId,
+                        principalTable: "Languages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -365,6 +413,11 @@ namespace EFDataAccess.Migrations
                 column: "GenreId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_BookLanguages_LanguageId",
+                table: "BookLanguages",
+                column: "LanguageId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_BookPrices_BookId",
                 table: "BookPrices",
                 column: "BookId");
@@ -373,11 +426,6 @@ namespace EFDataAccess.Migrations
                 name: "IX_BookPrices_Price",
                 table: "BookPrices",
                 column: "Price");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Books_Language",
-                table: "Books",
-                column: "Language");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Books_Title",
@@ -389,6 +437,11 @@ namespace EFDataAccess.Migrations
                 table: "Genres",
                 column: "Name",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Languages_Name",
+                table: "Languages",
+                column: "Name");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Logs_ActorId",
@@ -473,6 +526,9 @@ namespace EFDataAccess.Migrations
                 name: "BookGenres");
 
             migrationBuilder.DropTable(
+                name: "BookLanguages");
+
+            migrationBuilder.DropTable(
                 name: "BookPrices");
 
             migrationBuilder.DropTable(
@@ -489,6 +545,9 @@ namespace EFDataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "Genres");
+
+            migrationBuilder.DropTable(
+                name: "Languages");
 
             migrationBuilder.DropTable(
                 name: "Books");

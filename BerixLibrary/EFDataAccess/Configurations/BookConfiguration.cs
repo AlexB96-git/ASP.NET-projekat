@@ -1,4 +1,4 @@
-﻿using Domain;
+using Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -16,17 +16,16 @@ namespace EFDataAccess.Configurations
             builder.Property(x => x.Title)
                 .IsRequired()
                 .HasMaxLength(50);
+            builder.Property(x => x.ImageSrc)
+                .IsRequired()
+                .HasMaxLength(50);
             builder.Property(x => x.Description)
                 .IsRequired()
-                .HasMaxLength(200); 
-            builder.Property(x => x.Language)
-                .IsRequired()
-                .HasMaxLength(30);
+                .HasMaxLength(2000); 
             builder.Property(x => x.ReleaseDate)
                 .IsRequired();
 
             builder.HasIndex(x => x.Title);
-            builder.HasIndex(x => x.Language);
 
             builder.HasMany(x => x.OrderInvoices)
                 .WithOne(x => x.Book)
@@ -41,6 +40,10 @@ namespace EFDataAccess.Configurations
                 .HasForeignKey(x => x.BookId)
                 .OnDelete(DeleteBehavior.Restrict);
             builder.HasMany(x => x.Prices)
+                .WithOne(x => x.Book)
+                .HasForeignKey(x => x.BookId)
+                .OnDelete(DeleteBehavior.Restrict);
+            builder.HasMany(x => x.Languages)
                 .WithOne(x => x.Book)
                 .HasForeignKey(x => x.BookId)
                 .OnDelete(DeleteBehavior.Restrict);
