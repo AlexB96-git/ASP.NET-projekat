@@ -1,4 +1,4 @@
-﻿using Application.DTOs.Authors;
+using Application.DTOs.Authors;
 using Application.DTOs.Books;
 using Application.Queries.Books;
 using AutoMapper;
@@ -28,9 +28,10 @@ namespace Implementation.Queries.Books
 
         public IEnumerable<BookDTO> Execute(string searchTerm)
         {
-            var query = _dbContext.Books
-                .Include(book=>book.Authors).ThenInclude(author=> author.Author)
-                .Include(book=>book.Genres).ThenInclude(genre=>genre.Genre)
+      var query = _dbContext.Books
+          .Include(book => book.Authors).ThenInclude(author => author.Author)
+          .Include(book => book.Genres).ThenInclude(genre => genre.Genre)
+          .Include(book => book.Languages).ThenInclude(language => language.Language)
                 .Include(book=>book.Prices)
                 .AsQueryable();
 
