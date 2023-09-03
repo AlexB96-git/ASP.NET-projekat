@@ -11,7 +11,6 @@ using Implementation.Commands.Users;
 using Implementation.Email;
 using Implementation.Logging;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using System.Text;
@@ -20,7 +19,6 @@ using EFDataAccess;
 using Implementation.Validators;
 using Application.Commands.UseCases;
 using Implementation.Commands.UseCases;
-using Microsoft.OpenApi.Models;
 using Application.Queries.UseCases;
 using Implementation.Queries.UseCases;
 using Implementation.Commands.ShippingMethods;
@@ -43,7 +41,6 @@ using Implementation.Commands.Orders;
 using Application.Commands.Orders;
 using Application.Queries.Orders;
 using Implementation.Queries.Orders;
-using Implementation.Profiles;
 using Implementation.Queries.Logs;
 using Application.Queries.Logs;
 using Implementation.Commands.Logs;
@@ -51,25 +48,17 @@ using Implementation.Commands.Languages;
 using Application.Commands.Languages;
 using Application.Queries.Languages;
 using Implementation.Queries.Languages;
+using Application.Commands.HomeParagraphs;
+using Implementation.Commands.HomeParagraphs;
+using Implementation.Queries.HomeParagraphs;
+using Application.Queries.HomeParagraphs;
+using Microsoft.OpenApi.Models;
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
-builder.Services.AddCors(options =>
-{
-  options.AddPolicy(name: MyAllowSpecificOrigins,
-    policy =>
-    {
-      policy.WithOrigins("http://localhost:4200")
-      .AllowAnyHeader()
-      .AllowAnyMethod();
-    });
-});
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGen(c => {
     c.SwaggerDoc("v1", new OpenApiInfo
@@ -99,6 +88,20 @@ builder.Services.AddSwaggerGen(c => {
     });
 });
 
+builder.Services.AddControllers();
+builder.Services.AddCors(options =>
+{
+  options.AddPolicy(name: MyAllowSpecificOrigins,
+    policy =>
+    {
+      policy.WithOrigins("http://localhost:4200")
+      .AllowAnyHeader()
+      .AllowAnyMethod();
+    });
+});
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddTransient<IApplicationActor>(x =>
 {
@@ -113,7 +116,7 @@ builder.Services.AddTransient<IApplicationActor>(x =>
             RoleId = 3,
             Email = "Unauthorised actor",
             UserId = 3,
-            AllowedUseCases = new List<int> { 19, 30, 31, 34, 35, 36, 37, 38, 39, 49, 50 }
+            AllowedUseCases = new List<int> { 19, 30, 31, 34, 35, 36, 37, 38, 39, 42, 49, 50, 54, 55 }
         };
 
         return unauthorisedUser;
@@ -144,6 +147,7 @@ builder.Services.AddAutoMapper(typeof(EfCreateRole).Assembly);
 builder.Services.AddAutoMapper(typeof(EfCreateOrder).Assembly); 
 builder.Services.AddAutoMapper(typeof(EfCreateLog).Assembly); 
 builder.Services.AddAutoMapper(typeof(EfCreateLanguage).Assembly); 
+builder.Services.AddAutoMapper(typeof(EfCreateHomeParagraph).Assembly); 
 #endregion
 
 #region UseCase
@@ -222,6 +226,14 @@ builder.Services.AddTransient<IGetLanguagesQuery, EfGetLanguages>();
 builder.Services.AddTransient<IGetLanguageQuery, EfGetLanguage>();
 #endregion
 
+#region HomeParagraphs
+builder.Services.AddTransient<IAddHomeParagraphCommand, EfCreateHomeParagraph>();
+builder.Services.AddTransient<IDeleteHomeParagraphCommand, EfDeleteHomeParagraph>();
+builder.Services.AddTransient<IEditHomeParagraphCommand, EfUpdateHomeParagraph>();
+builder.Services.AddTransient<IGetHomeParagraphsQuery, EfGetHomeParagraphs>();
+builder.Services.AddTransient<IGetHomeParagraphQuery, EfGetHomeParagraph>();
+#endregion
+
 #region Validators
 builder.Services.AddTransient<BookDTOValidator>();
 builder.Services.AddTransient<BookInsertDTOValidator>();
@@ -238,6 +250,7 @@ builder.Services.AddTransient<UseCaseDTOValidator>();
 builder.Services.AddTransient<OrderDTOValidator>();
 builder.Services.AddTransient<OrderInsertDTOValidator>();
 builder.Services.AddTransient<LanguageDTOValidator>();
+builder.Services.AddTransient<HomeParagraphDTOValidator>();
 #endregion
 
 
@@ -271,6 +284,7 @@ var app = builder.Build();
 //if (app.Environment.IsDevelopment())
 //{
 //}
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
